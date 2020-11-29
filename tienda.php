@@ -62,7 +62,7 @@
               <a href="#" class="btn btn-sm btn-primary">
                 <i class="fas fa-cart-plus"></i>Lo quiero
               </a>
-              <a href="#" class="btn btn-sm btn-info">
+              <a href="detalle-producto.php" class="btn btn-sm btn-info">
                 <i class="fas fa-caret-square-right"></i>Ver más
               </a>
             </div>

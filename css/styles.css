@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&family=PT+Sans:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;700;900&display=swap');
 /* font-family: 'Lato', sans-serif; */
 /* font-family: 'Open Sans', sans-serif; */
 /* font-family: 'PT Sans', sans-serif; */
@@ -13,9 +13,9 @@
   --third-color: #007bff;
   --third-color-dark: #0271e7;
   --dark-color: #5c6268;
-  --primary-font: font-family: 'Open Sans', sans-serif;
-  --secondary-font: font-family: 'Lato', sans-serif;
-  --third-font:  font-family: 'Raleway', sans-serif;
+  --primary-font: 'Open Sans', sans-serif;
+  --secondary-font: 'Lato', sans-serif;
+  --third-font: 'Raleway', sans-serif;
 }
 body {
   font-family: var(--primary-font);
@@ -524,6 +524,62 @@ p.respuesta {
 }
 /* =============================================== */
 
+/* ====================== DETALLE PRODUCTO =============== */
+.detalle-producto .head {
+  background-color: var(--third-color);
+  height: 160px;
+}
+.detalle {
+  margin: 4rem auto;
+}
+.detalle img {
+  border: 1px solid #e1e1e1
+}
+.detalles .marca {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.4rem;
+  color: #313131;
+  font-family: var(--third-font);
+  font-weight: 300;
+}
+.detalles .sku {
+  font-size: 0.8rem;
+  color: #919191;
+}
+.detalles .precio {
+  font-family: var(--third-font);
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+.detalles .cantidad {
+  font-size: 0.8rem;
+  margin: 0;
+}
+.detalles input {
+  margin-bottom: 1rem;
+  max-width: 5rem;
+}
+.detalles .btn {
+  padding: 0.8rem 4rem;
+  color: white;
+}
+.detalle .info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-top: 3rem;
+  background-color: #f0f0f0;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+@media (min-width: 768px){
+  .detalle .info{
+    grid-template-columns: repeat(2, 15rem);
+  }
+}
+
+/* =============================================== */
+
 /* ====================== ASIDE DE CARRITO =============== */
 
 /* Wrapper */
@@ -627,7 +683,7 @@ p.respuesta {
   cursor: pointer;
 }
 .carrito .producto .precio {
-  font-family: var(--third-font);
+  font-family: 'Raleway', sans-serif;
   text-align: left;
   font-weight: bold;
 }
