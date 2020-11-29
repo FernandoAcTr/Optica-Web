@@ -117,25 +117,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>
@@ -168,25 +168,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>
@@ -218,25 +218,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>
@@ -267,25 +267,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>
@@ -316,25 +316,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>
@@ -365,25 +365,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>
@@ -414,25 +414,25 @@
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
 
     <div class="col-md-3 recomendacion">
       <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
       <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="#" class="btn btn-primary">COMPRAR</a>
+      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
     </div>
   </div>
 </div>

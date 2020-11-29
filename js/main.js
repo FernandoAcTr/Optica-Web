@@ -15,7 +15,7 @@
 $(document).ready(function () {
   //Configurar el preloader
   if ($('#page-loader').length) {
-    $('#page-loader').fadeOut(2000);
+    $('#page-loader').fadeOut(1000);
   }
 
   //Configurar Typed.js
