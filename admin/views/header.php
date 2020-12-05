@@ -16,7 +16,11 @@
     <link rel="stylesheet" href="../../plugins/adminlte/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="../../plugins/overlayScrollbars/OverlayScrollbars.min.css">
-    
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed">
