@@ -101,7 +101,7 @@
               <li class="nav-item">
                 <a href="../marca/marca.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
-                  <p>Ver todos</p>
+                  <p>Ver todas</p>
                 </a>
                 <a href="../marca/marca.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
@@ -123,9 +123,31 @@
               <li class="nav-item">
                 <a href="../categoria/categoria.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
-                  <p>Ver todos</p>
+                  <p>Ver todas</p>
                 </a>
                 <a href="../categoria/categoria.php?action=form" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Agregar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-friends"></i>
+              <p>
+                Formas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../forma/forma.php" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todas</p>
+                </a>
+                <a href="../forma/forma.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
