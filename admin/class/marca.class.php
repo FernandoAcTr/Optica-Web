@@ -19,7 +19,7 @@
 
        /**
         * fetchAll.
-        * Regresa una lista de todos las marcas todos las marcas.
+        * Regresa una lista de todas las marcas 
         */
        public function fetchAll()
        {

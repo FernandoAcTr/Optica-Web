@@ -37,7 +37,7 @@
 
        /**
         * fetchAll.
-        * Regresa una lista de todos los proveedores todos los proveedores.
+        * Regresa una lista de todos los proveedores 
         */
        public function fetchAll()
        {
