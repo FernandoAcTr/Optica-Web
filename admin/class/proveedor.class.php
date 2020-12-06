@@ -15,7 +15,7 @@
            $this->id_proveedor = $id_proveedor;
        }
 
-       public function setRazon_social($razon_social)
+       public function setRazonSocial($razon_social)
        {
            $this->razon_social = $razon_social;
        }
@@ -35,14 +35,45 @@
            $this->telefono = $telefono;
        }
 
-
        /**
         * fetchAll.
-        * Regresa una lista de todos los proveedores todos los proveedores 
+        * Regresa una lista de todos los proveedores todos los proveedores.
         */
-       function fetchAll() {
-          $sql = 'SELECT * from proveedor';
-          $proveedores = $this->execQuery($sql, null);
-          return $proveedores;
+       public function fetchAll()
+       {
+           $sql = 'SELECT * from proveedor';
+           $proveedores = $this->execQuery($sql, null);
+
+           return $proveedores;
+       }
+
+       public function readOneProveedor()
+       {
+           $sql = 'SELECT * from proveedor where id_proveedor = ?';
+           $params = [$this->id_proveedor];
+           $result = $this->execQuery($sql, $params);
+
+           return $result[0];
+       }
+
+       public function createProveedor()
+       {
+           $sql = 'INSERT into proveedor(razon_social, rfc, domicilio, telefono) values (?,?,?,?)';
+           $params = [$this->razon_social, $this->rfc, $this->domicilio, $this->telefono];
+           $this->execStmt($sql, $params);
+       }
+
+       public function deleteProveedor()
+       {
+           $sql = 'DELETE from proveedor where id_proveedor = ?';
+           $params = [$this->id_proveedor];
+           $this->execStmt($sql, $params);
+       }
+
+       public function modifyProveedor()
+       {
+           $sql = 'UPDATE proveedor set razon_social = ?, rfc = ?, domicilio = ?, telefono = ? where id_proveedor = ?';
+           $params = [$this->razon_social, $this->rfc, $this->domicilio, $this->telefono, $this->id_proveedor];
+           $this->execStmt($sql, $params);
        }
    }

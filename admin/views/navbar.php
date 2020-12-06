@@ -81,7 +81,7 @@
                   <i class="fas fa-list nav-icon"></i>
                   <p>Ver todos</p>
                 </a>
-                <a href="../proveedor/proveedor.php?action=new" class="nav-link">
+                <a href="../proveedor/proveedor.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>

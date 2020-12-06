@@ -27,18 +27,23 @@
                     </tr>
                   </thead>
                   <tbody>
+
+                    <?php foreach ($data as $row):?>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td>4</td>
+                      <td><?php echo $row['razon_social']; ?></td>
+                      <td><?php echo $row['rfc']; ?></td>
+                      <td><?php echo $row['domicilio']; ?></td>
+                      <td><?php echo $row['telefono']; ?></td>
                       <td class="text-center">
-                        <a href="#" class='btn btn-danger' role='button'><i class="fas fa-trash-alt"></i></a>
-                        <a href="#" class='btn btn-secondary' role='button'><i class="far fa-edit"></i></a>
+                        <a href="proveedor.php?action=delete&id_proveedor=<?php echo $row['id_proveedor']; ?>" class='btn btn-danger' role='button'><i
+                            class="fas fa-trash-alt"></i></a>
+                        <a href="proveedor.php?action=form&id_proveedor=<?php echo $row['id_proveedor']; ?>" class='btn btn-secondary' role='button'><i
+                            class="far fa-edit"></i></a>
                       </td>
                     </tr>
+                    <?php endforeach; //Fin del ciclo foreach?>
+
+
                   </tbody>
                   <tfoot>
                     <tr>
@@ -55,10 +60,12 @@
             </div>
             <!-- /.card -->
 
-          </div><!-- /.container-fluid -->
+          </div>
         </div>
-        <!-- /.content-header -->
-
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
   </main>
   <!-- /.content-wrapper -->
 </div>
