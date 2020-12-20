@@ -1,3 +1,6 @@
+<?php
+    define('HOST_BASE', 'http://localhost/PrograWeb/Optica');
+?>
 <!DOCTYPE html>
 <html lang="en">
 

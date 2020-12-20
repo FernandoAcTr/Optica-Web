@@ -19,7 +19,10 @@
            $this->password = '123456';
 
            try {
-               $this->conn = new PDO('mysql:host='.$this->host.';dbname='.$this->database, $this->user, $this->password);
+               $options = [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+               ];
+               $this->conn = new PDO('mysql:host='.$this->host.';dbname='.$this->database, $this->user, $this->password, $options);
 
                $this->conn->exec('set names utf8');
                setlocale(LC_ALL, 'es_ES.UTF-8');
@@ -46,15 +49,16 @@
        public function execQuery($sql, $params)
        {
            $this->connect();
-           $stmt = $this->conn->prepare($sql);
-
            $fila = null;
-           if ($stmt->execute($params)) {
+
+           try {
+               $stmt = $this->conn->prepare($sql);
+               $stmt->execute($params);
                $fila = $stmt->fetchAll(PDO::FETCH_ASSOC);
-           } else {
-               $this->close();
-               throw new Exception('Error al ejecutar consulta. Checa la sintaxis SQL', 1);
+           } catch (\Throwable $th) {
+               throw $th;
            }
+
            $this->close();
 
            return $fila;
@@ -71,10 +75,11 @@
        {
            $this->connect();
 
-           $stmt = $this->conn->prepare($sql);
-           if (!$stmt->execute($params)) {
-               $this->close();
-               throw new Exception('Error al ejecutar el insert: execStmt', 1);
+           try {
+               $stmt = $this->conn->prepare($sql);
+               $stmt->execute($params);
+           } catch (\Throwable $th) {
+               throw $th;
            }
 
            $this->close();
@@ -99,30 +104,17 @@
            $this->connect();
            $this->conn->beginTransaction();
 
-           $rollback = false;
-
            try {
                foreach ($arraySql as $sql) {
                    $stmt = $this->conn->prepare($sql['sql']);
-
-                   if (!$stmt->execute()) {
-                       $rollback = true;
-                       print_r($sql['params']);
-                   }
+                   $stmt->execute($sql['params']);
                }
-           } catch (\Throwable $th) {
-               $rollback = true;
-               print_r($th);
-           }
-
-           if ($rollback) {
-               $this->conn->rollBack();
-           } else {
                $this->conn->commit();
+           } catch (\Throwable $th) {
+               $this->conn->rollBack();
+               throw $th;
            }
 
            $this->close();
-
-           return $rollback;
        }
    }

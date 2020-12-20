@@ -2,10 +2,7 @@
 
 include_once '../class/tipo_armazon.class.php';
 
-$action = null;
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-}
+$action = isset($_GET['action']) ? $_GET['action'] : null;
 
 $tipo_armazon = new TipoArmazon();
 

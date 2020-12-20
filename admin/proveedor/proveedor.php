@@ -2,10 +2,7 @@
 
 include_once '../class/proveedor.class.php';
 
-$action = null;
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-}
+$action = isset($_GET['action']) ? $_GET['action'] : null;
 
 $proveedor = new Proveedor();
 

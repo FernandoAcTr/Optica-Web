@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index.php" class="nav-link">Home</a>
+        <a href="<?php echo HOST_BASE; ?>/index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Ajustes</a>
@@ -59,7 +59,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../dashboard/dashboard.php" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/dashboard/dashboard.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard</p>
                 </a>
@@ -77,17 +77,42 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../proveedor/proveedor.php" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/proveedor/proveedor.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
                   <p>Ver todos</p>
                 </a>
-                <a href="../proveedor/proveedor.php?action=form" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/proveedor/proveedor.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
               </li>
             </ul>
           </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-tags"></i>
+              <p>
+                Productos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOST_BASE; ?>/admin/producto/producto.php" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="<?php echo HOST_BASE; ?>/admin/producto/producto.php?action=form" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Agregar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-header">Catálogos</li>
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -99,11 +124,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../marca/marca.php" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/marca/marca.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
                   <p>Ver todas</p>
                 </a>
-                <a href="../marca/marca.php?action=form" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/marca/marca.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
@@ -121,11 +146,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../categoria/categoria.php" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/categoria/categoria.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
                   <p>Ver todas</p>
                 </a>
-                <a href="../categoria/categoria.php?action=form" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/categoria/categoria.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
@@ -143,11 +168,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../forma/forma.php" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/forma/forma.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
                   <p>Ver todas</p>
                 </a>
-                <a href="../forma/forma.php?action=form" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/forma/forma.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
@@ -165,17 +190,130 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../tipo_armazon/tipo_armazon.php" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/tipo_armazon/tipo_armazon.php" class="nav-link">
                   <i class="fas fa-list nav-icon"></i>
                   <p>Ver todos</p>
                 </a>
-                <a href="../tipo_armazon/tipo_armazon.php?action=form" class="nav-link">
+                <a href="<?php echo HOST_BASE; ?>/admin/tipo_armazon/tipo_armazon.php?action=form" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
               </li>
             </ul>
           </li>
+
+          <!-- Sistema CRUGE -->
+          <li class="nav-header">Sistema de Usuarios</li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Usuarios
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Agregar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Roles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Agregar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-lock"></i>
+              <p>
+                Permisos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Agregar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-cog"></i>
+              <p>
+                Asignación de Roles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Asignar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-slash"></i>
+              <p>
+                Asignación de permisos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="#" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Asignar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

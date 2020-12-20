@@ -45,6 +45,9 @@
 
       <p>Ancho total</p>
       <p>123</p>
+
+      <p>Tipo de Armazon</p>
+      <p>Ranurado</p>
     </div>
 
   </div>
