@@ -1,6 +1,6 @@
 <?php
 
-   include 'database.class.php';
+   include_once 'database.class.php';
 
    class Producto extends Database
    {
@@ -168,12 +168,18 @@
        public function deleteProducto()
        {
            $producto = $this->readOneProducto();
-           if (strcmp($producto['foto'], 'no-foto.jpg') != 0) {
-               $this->deletePicture($producto['foto']);
+           try {
+               $sql = 'DELETE from producto where id_producto = ?';
+               $params = [$this->id_producto];
+               $this->execStmt($sql, $params);
+
+               if (strcmp($producto['foto'], 'no-foto.jpg') != 0) {
+                   $this->deletePicture($producto['foto']);
+               }
+           } catch (\Throwable $th) {
+               $mensaje = 'No puedes eliminar un producto que ya se ha comprado antes. Elimina todas las compras en donde se encuentre registrado';
+               die ($mensaje);
            }
-           $sql = 'DELETE from producto where id_producto = ?';
-           $params = [$this->id_producto];
-           $this->execStmt($sql, $params);
        }
 
        public function fetchAll()
@@ -213,7 +219,7 @@
 
                $nombreLimpio = uniqid().'.'.$type;
 
-               if (move_uploaded_file($this->foto['tmp_name'], '../producto/img/'.$nombreLimpio)) {
+               if (move_uploaded_file($this->foto['tmp_name'], '../../productos/'.$nombreLimpio)) {
                    return $nombreLimpio;
                }
            }
@@ -224,7 +230,7 @@
        private function deletePicture($name)
        {
            try {
-               unlink('../producto/img/'.$name);
+               unlink('../../productos/'.$name);
            } catch (\Throwable $th) {
            }
        }

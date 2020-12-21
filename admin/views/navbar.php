@@ -111,6 +111,28 @@
             </ul>
           </li>
 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-money-bill-wave"></i>
+              <p>
+                Compras
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOST_BASE; ?>/admin/compra/compra.php" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todas</p>
+                </a>
+                <a href="<?php echo HOST_BASE; ?>/admin/compra/compra.php?action=form" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Registrar Compra</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
           <li class="nav-header">Catálogos</li>
 

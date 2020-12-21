@@ -24,6 +24,19 @@
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+    <style>
+    legend {
+      font-size: 1.3rem;
+      color: #4f4f4f;
+      width: unset;
+      padding: 1rem;
+    }
+
+    fieldset {
+      border: 1px solid #9f9f9f !important;
+      padding: 1rem !important;
+    }
+    </style>
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed">

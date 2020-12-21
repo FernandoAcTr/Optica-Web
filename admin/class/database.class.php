@@ -85,36 +85,4 @@
            $this->close();
        }
 
-       /**
-        * execMultipleStmt.
-        * Ejecuta multiples insercciones SQL dentro de una transaccion.
-        *
-        * @param	mixed	$arraySql Arreglo de insercciones con el formato+
-        *	 $arraySql = [
-        *       [
-        *         'sql' => 'INSERT into A(a, b, c, d) values (?,?,?,?)',
-        *         'params' => ['a', 'b', 'c','d'],
-        *       ],
-        *    ]
-        *
-        * @return	bool si se ejecutaron o no todas las insercciones
-        */
-       public function execMultipleStmt($arraySql)
-       {
-           $this->connect();
-           $this->conn->beginTransaction();
-
-           try {
-               foreach ($arraySql as $sql) {
-                   $stmt = $this->conn->prepare($sql['sql']);
-                   $stmt->execute($sql['params']);
-               }
-               $this->conn->commit();
-           } catch (\Throwable $th) {
-               $this->conn->rollBack();
-               throw $th;
-           }
-
-           $this->close();
-       }
    }
