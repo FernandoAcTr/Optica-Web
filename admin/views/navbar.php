@@ -49,22 +49,13 @@
         <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo HOST_BASE; ?>/admin/dashboard/dashboard.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard</p>
-                </a>
-              </li>
-            </ul>
           </li>
 
           <li class="nav-item has-treeview">
@@ -91,7 +82,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tags"></i>
+              <i class="nav-icon fas fa-tags"></i>
               <p>
                 Productos
                 <i class="right fas fa-angle-left"></i>
@@ -113,7 +104,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-money-bill-wave"></i>
+              <i class="nav-icon fas fa-money-bill-wave"></i>
               <p>
                 Compras
                 <i class="right fas fa-angle-left"></i>
@@ -131,6 +122,15 @@
                 </a>
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?php echo HOST_BASE; ?>/admin/inventario/inventario.php" class="nav-link">
+              <i class="nav-icon fas fa-warehouse"></i>
+              <p>
+                Inventario
+              </p>
+            </a>
           </li>
 
 
