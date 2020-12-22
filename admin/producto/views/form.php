@@ -51,8 +51,7 @@
                     <label for="id_forma">Forma</label>
                     <select name="id_forma" id="id_forma" class="form-control">
                       <?php foreach ($data['formas'] as $forma):?>
-                      <option value="<?php echo $forma['id_forma']; ?>"
-                        <?php echo $forma['id_forma'] === $data['id_forma'] ? 'selected' : ''; ?>>
+                      <option value="<?php echo $forma['id_forma']; ?>" <?php echo $forma['id_forma'] === $data['id_forma'] ? 'selected' : ''; ?>>
                         <?php echo $forma['forma']; ?></option>
                       <?php endforeach; //Fin del ciclo foreach?>
                     </select>
@@ -81,17 +80,20 @@
 
                   <div class="form-group">
                     <label for="longitud_varilla">Longitud de la Varilla</label>
-                    <input type="number" min="0" class="form-control w-25" id="longitud_varilla" name="longitud_varilla" value="<?php echo $data['longitud_varilla']; ?>" required>
+                    <input type="number" min="0" class="form-control w-25" id="longitud_varilla" name="longitud_varilla"
+                      value="<?php echo $data['longitud_varilla']; ?>" required>
                   </div>
 
                   <div class="form-group">
                     <label for="ancho_puente">Ancho del Puente</label>
-                    <input type="number" min="0" class="form-control w-25" id="ancho_puente" name="ancho_puente" value="<?php echo $data['ancho_puente']; ?>" required>
+                    <input type="number" min="0" class="form-control w-25" id="ancho_puente" name="ancho_puente" value="<?php echo $data['ancho_puente']; ?>"
+                      required>
                   </div>
 
                   <div class="form-group">
                     <label for="ancho_total">Ancho Total</label>
-                    <input type="number" min="0" class="form-control w-25" id="ancho_total" name="ancho_total" value="<?php echo $data['ancho_total']; ?>" required>
+                    <input type="number" min="0" class="form-control w-25" id="ancho_total" name="ancho_total" value="<?php echo $data['ancho_total']; ?>"
+                      required>
                   </div>
 
                   <div class="form-group">
@@ -103,6 +105,10 @@
                     <label for="precio">Precio de Venta</label>
                     <input type="text" class="form-control" id="precio" name="precio" value="<?php echo $data['precio']; ?>" required>
                   </div>
+
+                  <?php if (is_numeric($id_producto)): ?>
+                  <img src="../../img/productos/<?php echo $data['foto']; ?>" alt="Imagen del producto" height="100">
+                  <?php endif; //Fin del if?>
 
                   <div class="form-group">
                     <label for="foto">Foto</label>

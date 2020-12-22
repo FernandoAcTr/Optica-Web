@@ -1,6 +1,7 @@
 <?php
 
 include_once '../class/tipo_armazon.class.php';
+$sistema->verificarPermiso('Catalogos');
 
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 

@@ -4,6 +4,7 @@
    
    1. Datatables
    2. Registro de Productos
+   3. Validacion de formulario de registro de usuarios
 
 */
 $(function () {
@@ -70,11 +71,57 @@ $(function () {
         tr.remove();
       });
     });
-    
+
     $('.btn-eliminar').click(function (e) {
       e.preventDefault();
       let tr = $(this).parent().parent();
       tr.remove();
     });
+  }
+
+  //Validacion de formulario de registro de usuarios
+  let isEmailCorrect = false;
+  if ($('#usuario').length) {
+    $('#contrasena').keyup(validatePassword);
+    $('#rep_contrasena').keyup(validatePassword);
+    $('#correo').keyup(validarEmail);
+    validarEmail();
+  }
+
+  function validatePassword(e) {
+    let password = $('#contrasena').val();
+    let repPass = $('#rep_contrasena').val();
+    if (password !== repPass) {
+      $('#rep_contrasena').addClass('is-invalid');
+      $('#password_help').text('Las contraseñas no coinciden');
+    } else {
+      $('#rep_contrasena').removeClass('is-invalid');
+      $('#rep_contrasena').addClass('is-valid');
+      $('#password_help').text('');
+    }
+  }
+
+  function validarEmail(e) {
+    console.log($('#correo').val());
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#correo').val())
+    ) {
+      $('#correo').removeClass('is-invalid');
+      $('#email_help').text('');
+      isEmailCorrect = true;
+    } else {
+      $('#correo').addClass('is-invalid');
+      $('#email_help').text('El correo es invalido');
+      isEmailCorrect = false;
+    }
+    enableButton();
+  }
+
+  function enableButton() {
+    if (isEmailCorrect) {
+      $('#guardar').prop('disabled', false);
+    } else {
+      $('#guardar').prop('disabled', true);
+    }
   }
 });

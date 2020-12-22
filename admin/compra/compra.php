@@ -12,6 +12,7 @@ $compra = new Compra();
 
 switch ($action) {
   case 'new':
+    $sistema->verificarPermiso('Escribir compras');
     $compra->setFolio($_POST['folio']);
     $compra->setFecha($_POST['fecha']);
     $compra->setIdProveedor($_POST['id_proveedor']);
@@ -21,6 +22,7 @@ switch ($action) {
     break;
 
   case 'modify':
+    $sistema->verificarPermiso('Escribir compras');
     $compra->setFolio($_POST['folio']);
     $compra->setFecha($_POST['fecha']);
     $compra->setIdProveedor($_POST['id_proveedor']);
@@ -31,6 +33,8 @@ switch ($action) {
     break;
 
   case 'form':
+    $sistema->verificarPermiso('Escribir compras');
+
     $id_compra = isset($_GET['id_compra']) ? $_GET['id_compra'] : '';
 
     $data = [
@@ -58,6 +62,8 @@ switch ($action) {
     break;
 
   case 'delete':
+    $sistema->verificarPermiso('Eliminar compras');
+
     $id_compra = isset($_GET['id_compra']) ? $_GET['id_compra'] : '';
     $compra->setIdCompra($id_compra);
     $compra->deleteCompra();
@@ -65,6 +71,7 @@ switch ($action) {
     break;
 
   default:
+    $sistema->verificarPermiso('Leer compras');
     $data = $compra->fetchAll();
     include 'views/table.php';
     break;

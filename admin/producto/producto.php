@@ -5,6 +5,7 @@ include_once '../class/marca.class.php';
 include_once '../class/forma.class.php';
 include_once '../class/categoria.class.php';
 include_once '../class/tipo_armazon.class.php';
+$sistema->verificarPermiso('Productos');
 
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 

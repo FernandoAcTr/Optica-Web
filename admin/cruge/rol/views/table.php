@@ -1,5 +1,5 @@
-<?php include '../views/header.php'; ?>
-<?php include '../views/navbar.php'; ?>
+<?php include '../../views/header.php'; ?>
+<?php include '../../views/navbar.php'; ?>
 
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -7,50 +7,43 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <h3 class="mb-4">Compras</h3>
+        <h3 class="mb-4">Roles</h3>
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">En esta página encontrarás la informacón de todas las compras realizadas a proveedores</h3>
+                <h3 class="card-title">En esta página encontrarás la informacón de todos los roles que se pueden asignar a un usuario</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="tabla" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>Folio</th>
-                      <th>Fecha</th>
-                      <th>Proveedor</th>
-                      <th>
-                        <!--acciones-->
+                      <th scope="col">Rol</th>
+                      <th scope="col">
+                        <!--botones-->
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-
-                    <?php foreach ($data as $row):?>
+                    <?php foreach ($data as $resultado => $fila):?>
                     <tr>
-                      <td><?php echo $row['folio']; ?></td>
-                      <td><?php echo $row['fecha']; ?></td>
-                      <td><?php echo $row['razon_social']; ?></td>
+                      <td><?php echo $fila['rol']; ?></td>
                       <td class="text-center">
-                        <a href="compra.php?action=delete&id_compra=<?php echo $row['id_compra']; ?>" class='btn btn-danger' role='button'><i
+                        <a href="rol.php?id_rol=<?php echo $fila['id_rol']; ?>&action=delete" class='btn btn-danger' role='button'><i
                             class="fas fa-trash-alt"></i></a>
-                        <a href="compra.php?action=form&id_compra=<?php echo $row['id_compra']; ?>" class='btn btn-secondary' role='button'><i
+                        <a href="rol.php?id_rol=<?php echo $fila['id_rol']; ?>&action=form" class='btn btn-secondary' role='button'><i
                             class="far fa-edit"></i></a>
                       </td>
                     </tr>
-                    <?php endforeach; //Fin del ciclo foreach?>
-
+                    <?php endforeach;
+                    //Fin del ciclo foreach?>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <th>Folio</th>
-                      <th>Fecha</th>
-                      <th>Proveedor</th>
-                      <th>
-                        <!--acciones-->
+                      <th scope="col">Rol</th>
+                      <th scope="col">
+                        <!--botones-->
                       </th>
                     </tr>
                   </tfoot>
@@ -59,7 +52,6 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
           </div>
         </div>
       </div>
@@ -71,4 +63,4 @@
 </div>
 <!-- ./wrapper -->
 
-<?php include '../views/footer.php'; ?>
+<?php include '../../views/footer.php'; ?>

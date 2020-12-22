@@ -219,7 +219,7 @@
 
                $nombreLimpio = uniqid().'.'.$type;
 
-               if (move_uploaded_file($this->foto['tmp_name'], '../../productos/'.$nombreLimpio)) {
+               if (move_uploaded_file($this->foto['tmp_name'], '../../img/productos/'.$nombreLimpio)) {
                    return $nombreLimpio;
                }
            }
@@ -230,7 +230,7 @@
        private function deletePicture($name)
        {
            try {
-               unlink('../../productos/'.$name);
+               unlink('../../img/productos/'.$name);
            } catch (\Throwable $th) {
            }
        }

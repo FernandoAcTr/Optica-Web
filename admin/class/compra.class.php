@@ -167,7 +167,7 @@ class Compra extends Database
     {
         $sql = 'SELECT c.*, p.razon_social 
         FROM compra c
-        JOIN proveedor p USING(id_proveedor)';
+        LEFT JOIN proveedor p USING(id_proveedor)';
 
         return $this->execQuery($sql, null);
     }

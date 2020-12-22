@@ -1,6 +1,3 @@
-<?php
-    define('HOST_BASE', 'http://localhost/PrograWeb/Optica');
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,31 +9,25 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/all.min.css">
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/plugins/fontawesome-free/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../plugins/adminlte/adminlte.min.css">
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/plugins/adminlte/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="../../plugins/overlayScrollbars/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/plugins/overlayScrollbars/OverlayScrollbars.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
-    <style>
-    legend {
-      font-size: 1.3rem;
-      color: #4f4f4f;
-      width: unset;
-      padding: 1rem;
-    }
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/css/admin.css">
 
-    fieldset {
-      border: 1px solid #9f9f9f !important;
-      padding: 1rem !important;
-    }
-    </style>
+    <?php
+       $archivo = basename($_SERVER['PHP_SELF']);
+       $pagina = str_replace('.php', '', $archivo);
+    ?>
   </head>
 
-  <body class="hold-transition sidebar-mini layout-fixed">
+  <body class="hold-transition sidebar-mini layout-fixed" id="<?php echo $pagina; ?>">

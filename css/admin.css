@@ -1,0 +1,15 @@
+legend {
+  font-size: 1.3rem;
+  color: #4f4f4f;
+  width: unset;
+  padding: 1rem;
+}
+
+fieldset {
+  border: 1px solid #9f9f9f !important;
+  padding: 1rem !important;
+}
+
+.text-red {
+  color: red;
+}

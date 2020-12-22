@@ -8,6 +8,7 @@ $proveedor = new Proveedor();
 
 switch ($action) {
   case 'new':
+    $sistema->verificarPermiso('Escribir proveedores');
     $data = [
       'razon_social' => isset($_POST['razon_social']) ? $_POST['razon_social'] : '',
       'rfc' => isset($_POST['rfc']) ? $_POST['rfc'] : '',
@@ -23,6 +24,7 @@ switch ($action) {
     break;
 
   case 'modify':
+    $sistema->verificarPermiso('Escribir proveedores');
     $data = [
       'razon_social' => isset($_POST['razon_social']) ? $_POST['razon_social'] : '',
       'rfc' => isset($_POST['rfc']) ? $_POST['rfc'] : '',
@@ -40,6 +42,7 @@ switch ($action) {
     break;
 
   case 'form':
+    $sistema->verificarPermiso('Escribir proveedores');
     $id_proveedor = isset($_GET['id_proveedor']) ? $_GET['id_proveedor'] : '';
 
     $data = [
@@ -63,6 +66,7 @@ switch ($action) {
     break;
 
   case 'delete':
+    $sistema->verificarPermiso('Eliminar proveedores');
     $id_proveedor = $_GET['id_proveedor'];
     $proveedor->setIdProveedor($id_proveedor);
     $proveedor->deleteProveedor();
@@ -71,6 +75,7 @@ switch ($action) {
     break;
 
   default:
+    $sistema->verificarPermiso('Leer proveedores');
     $data = $proveedor->fetchAll();
     include 'views/table.php';
     break;

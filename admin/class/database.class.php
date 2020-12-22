@@ -84,5 +84,5 @@
 
            $this->close();
        }
-
    }
+   include_once 'sistema.class.php';
