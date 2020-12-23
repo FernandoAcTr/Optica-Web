@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group">
                   <label for="contrasena" class="text-info">Password:</label><br>
-                  <input type="text" name="contrasena" id="contrasena" class="form-control">
+                  <input type="password" name="contrasena" id="contrasena" class="form-control">
                 </div>
                 <div class="form-group">
                   <input type="submit" class="btn btn-info btn-md" value="Entrar">

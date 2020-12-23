@@ -76,13 +76,22 @@
                $stmt->execute([$usuario['id_usuario'], 4]);
 
                //enviar correo con sus credenciales
-               //    $mensaje = 'Estimado usuario, se ha activado su cuenta para el sistema crack';
-               //    $mensaje .= '<br>Sus credenciales son las siguientes:<br>';
-               //    $mensaje .= 'Usuario: '.$this->correo.'<br>';
-               //    $mensaje .= 'Clave: '.$plainTextPassword.'<br>';
+               $mensaje = "
+               <h1>Activación de Cuenta</h1>
+               <h2>Estimado $this->nombre:</h2> 
+               <p>Se ha activado su cuenta para el sistema <strong>Optica Tovar</strong>. 
+               Presione la siguiente imagen para ir al panel de administración</p>
+               <div align='center'>
+                 <a href='".HOST_BASE."/admin/login/login.php'>
+                    <img src='".HOST_BASE."/assets/img/logo.png' height='100'>
+                 </a>
+               </div>
+               <p>Sus credenciales de acceso son:</p>
+               <p><b>Usuario:</b> $this->correo </p>
+               <p><b>Contraseña:</b> $plainTextPassword </p>";
 
-               //    $sistema = new Sistema();
-               //    $sistema->envioCorreo($this->correo, 'Usuario Generico', 'Se ha creado una nueva cuenta para usted', $mensaje);
+               $sistema = new Sistema();
+               $sistema->envioCorreo($this->correo, 'Usuario Generico', 'Se ha creado una nueva cuenta para usted', $mensaje);
                $this->conn->commit();
            } catch (\Throwable $th) {
                $this->conn->rollback();

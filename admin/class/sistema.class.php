@@ -1,6 +1,10 @@
 <?php
 
 define('HOST_BASE', 'http://localhost/PrograWeb/Optica');
+require_once __DIR__.'/../password.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 class Sistema extends Database
 {
@@ -22,6 +26,13 @@ class Sistema extends Database
         if (!$hasPermission) {
             header('Location: '.HOST_BASE.'/admin/forbidden/forbidden.php');
             die();
+        }
+    }
+
+    public function verificarLogin()
+    {
+        if (isset($_SESSION['validado'])) {
+            header('Location: '.HOST_BASE.'/admin/dashboard/dashboard.php');
         }
     }
 
@@ -105,6 +116,33 @@ class Sistema extends Database
     public function logout()
     {
         session_destroy();
+    }
+
+    public function envioCorreo($destino, $nombreDestino, $asunto, $mensaje)
+    {
+        require __DIR__.'/../../vendor/autoload.php';
+        $mail = new PHPMailer();
+
+        $mail->isSMTP();
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPAuth = true;
+        $mail->CharSet = PHPMailer::CHARSET_UTF8;
+        $mail->Encoding = PHPMailer::ENCODING_QUOTED_PRINTABLE;
+
+        $mail->Username = '17030801@itcelaya.edu.mx';
+        $mail->Password = PASSWORD;
+        $mail->setFrom('17030801@itcelaya.edu.mx', 'Fernando Acosta');
+
+        $mail->addAddress($destino, $nombreDestino);
+
+        $mail->Subject = $asunto;
+
+        $mail->msgHTML($mensaje);
+
+        return $mail->send();
     }
 }
 $sistema = new Sistema();

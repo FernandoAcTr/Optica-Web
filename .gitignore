@@ -2,3 +2,5 @@ assets/img/dummy/
 admin/producto/img/*
 img/productos/*
 img/usuarios/*
+vendor/
+admin/password.php

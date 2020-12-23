@@ -24,6 +24,7 @@ switch ($action) {
 
       break;
    default:
+      $sistema->verificarLogin();
       include 'views/index.php';
       break;
 }
