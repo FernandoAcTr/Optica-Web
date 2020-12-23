@@ -9,27 +9,29 @@
 */
 $(function () {
   // Datatables
-  $('#tabla').DataTable({
-    paging: true,
-    lengthChange: false,
-    searching: true,
-    ordering: true,
-    info: true,
-    autoWidth: false,
-    responsive: true,
-    language: {
-      paginate: {
-        next: 'Siguiente',
-        previous: 'Anterior',
-        last: 'Último',
-        first: 'Primero',
+  if ($('#tabla').length) {
+    $('#tabla').DataTable({
+      paging: true,
+      lengthChange: false,
+      searching: true,
+      ordering: true,
+      info: true,
+      autoWidth: false,
+      responsive: true,
+      language: {
+        paginate: {
+          next: 'Siguiente',
+          previous: 'Anterior',
+          last: 'Último',
+          first: 'Primero',
+        },
+        info: 'Mostrando _START_ - _END_ de _TOTAL_ resultados',
+        search: 'Buscar',
+        emptytable: 'No hay registros',
+        infoEmpty: '0 registros',
       },
-      info: 'Mostrando _START_ - _END_ de _TOTAL_ resultados',
-      search: 'Buscar',
-      emptytable: 'No hay registros',
-      infoEmpty: '0 registros',
-    },
-  });
+    });
+  }
 
   //registro de productos
   if ($('#table-products').length) {
@@ -81,9 +83,12 @@ $(function () {
 
   //Validacion de formulario de registro de usuarios
   let isEmailCorrect = false;
-  if ($('#usuario').length) {
+  if ($('#contrasena').length) {
     $('#contrasena').keyup(validatePassword);
     $('#rep_contrasena').keyup(validatePassword);
+  }
+
+  if ($('#correo').length) {
     $('#correo').keyup(validarEmail);
     validarEmail();
   }

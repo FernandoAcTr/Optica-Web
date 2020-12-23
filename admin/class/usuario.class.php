@@ -91,7 +91,7 @@
                <p><b>Contraseña:</b> $plainTextPassword </p>";
 
                $sistema = new Sistema();
-               $sistema->envioCorreo($this->correo, 'Usuario Generico', 'Se ha creado una nueva cuenta para usted', $mensaje);
+               $sistema->envioCorreo($this->correo, $this->nombre, 'Se ha creado una nueva cuenta para usted', $mensaje);
                $this->conn->commit();
            } catch (\Throwable $th) {
                $this->conn->rollback();

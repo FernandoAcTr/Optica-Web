@@ -36,6 +36,10 @@ class Sistema extends Database
         }
     }
 
+    /**
+     * Hace una consulta a la base de datos para buscar las credenciales del usuario
+     * Inicia una session.
+     */
     public function validar($correo, $contrasena)
     {
         $contrasena = md5($contrasena);
@@ -89,8 +93,7 @@ class Sistema extends Database
     private function getUserAtributes($sql, $id_usuario)
     {
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(1, $id_usuario);
-        $stmt->execute();
+        $stmt->execute([$id_usuario]);
         $registros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $registros;
@@ -113,9 +116,71 @@ class Sistema extends Database
         return $datos != null;
     }
 
-    public function logout()
+    public function verificarToken($correo, $token)
     {
-        session_destroy();
+        if ($this->verificarCorreo($correo) && $token) {
+            $this->connect();
+            $sql = 'SELECT * from usuario where correo = ? and token = ?';
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$correo, $token]);
+            $datos = $stmt->fetch();
+
+            $this->close();
+
+            return $datos != null;
+        }
+
+        return false;
+    }
+
+    public function enviarCorreoRecuperacion($correo)
+    {
+        $token = $this->generateToken(16, $correo);
+        $this->connect();
+
+        try {
+            //asignamos un token al usuario
+            $sql = 'UPDATE usuario set token = ? where correo = ?';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$token, $correo]);
+
+            $sql = 'SELECT nombre from usuario where correo = ?';
+            $usuario = $this->getUserAtributes($sql, $correo);
+            $usuario = $usuario[0];
+            $nombre = $usuario['nombre'];
+
+            //Le mandamos el token por correo
+            $vinculo = HOST_BASE."/admin/login/login.php?action=reestablecer&correo=$correo&token=$token";
+            $mensaje = "
+               <h1>Recuperación de contraseña</h1>
+               <h2>Estimado $nombre:</h2> 
+               <p>Se ha solicitado una recuperación de contraseña para su cuenta en Óptica Tovar</strong>. 
+               Presione el siguiente vínculo para reestablecer una nueva contraseña:</p>
+               <div align='center'>
+                 <a href='$vinculo'>Reestablecer mi contraseña</a>
+               </div>
+               <p>Si usted no ha solicitado esta acción ignore este mensaje.</p>";
+
+            $enviado = $this->envioCorreo($correo, $nombre, 'Recuperacion de contraseña', $mensaje);
+            echo $enviado ? 'Se ha enviado un correo de recuperación. Por favor revisa tu correo. Puedes cerrar esta pestaña'
+            : 'Upps tenemos problemas. Intentalo más tarde';
+        } catch (\Throwable $th) {
+            echo $th;
+            die();
+        }
+
+        $this->close();
+    }
+
+    public function cambiarContrasena($correo, $nuevaContra)
+    {
+        $nuevaContra = md5($nuevaContra);
+        $this->connect();
+        $sql = 'UPDATE usuario SET contrasena = ?, token = null WHERE correo = ?';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$nuevaContra, $correo]);
+        $this->close();
     }
 
     public function envioCorreo($destino, $nombreDestino, $asunto, $mensaje)
@@ -143,6 +208,24 @@ class Sistema extends Database
         $mail->msgHTML($mensaje);
 
         return $mail->send();
+    }
+
+    public function logout()
+    {
+        session_destroy();
+    }
+
+    /**
+     * generateToken.
+     * Recibe una cadena y genera un token aleatorio de $longitud digitos a partir de ella.
+     */
+    private function generateToken($longitud, $cadena)
+    {
+        if ($longitud < 4) {
+            $longitud = 4;
+        }
+
+        return substr(md5($cadena.sha1($cadena.'llavePrivada').rand(1, 10000)), 0, $longitud);
     }
 }
 $sistema = new Sistema();

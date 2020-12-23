@@ -8,37 +8,27 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="<?php echo HOST_BASE; ?>/css/admin.css">
 
-    <title>Login</title>
+    <title>Recuperar Contraseña</title>
   </head>
 
   <body>
+
     <div class="sidenav">
       <div class="login-main-text">
-        <h2>Aplicación<br>Inicio de Sesion</h2>
-        <p>Inicia sesion para obtener acceso</p>
+        <h2>Recuperar<br>Contraseña</h2>
+        <p>Ingresa tu correo para recuperar tu contraseña</p>
       </div>
     </div>
     <div class="main">
 
-      <?php if (!empty($mensaje)): ?>
-      <div class="alert alert-danger" role="alert">
-        <?php echo $mensaje; ?>
-      </div>
-      <?php endif; //Fin del if?>
-
       <div class="col-md-6 col-sm-12">
         <div class="login-form">
-          <form action="login.php?action=login" method="POST">
+          <form action="login.php?action=correoRecueperacion" method="POST">
             <div class="form-group">
               <label>Correo Electronico</label>
               <input type="text" class="form-control" placeholder="Nombre de usuario" name="correo">
             </div>
-            <div class="form-group">
-              <label>Contraseña</label>
-              <input type="password" class="form-control" placeholder="Contraseña" name="contrasena">
-            </div>
-            <button type="submit" class="btn btn-black">Iniciar Sesión</button>
-            <a class="btn" href="<?php echo HOST_BASE; ?>/admin/login/login.php?action=recuperar">Recuperar contraseña</a>
+            <button type="submit" class="btn btn-black">Enviar correo de recuperación</button>
           </form>
         </div>
       </div>
