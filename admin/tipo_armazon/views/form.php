@@ -22,7 +22,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="tipo_armazon">Tipo de Armazon</label>
-                    <input type="text" class="form-control" id="tipo_armazon" name="tipo_armazon" value="<?php echo $data['tipo_armazon']; ?>" required>
+                    <input type="text" class="form-control" id="tipo_armazon" name="tipo_armazon" value="<?php echo $data['tipo_armazon']; ?>" autofocus required>
                   </div>
                 </div>
                 <!-- /.card-body -->

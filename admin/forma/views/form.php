@@ -21,8 +21,8 @@
               <form action="<?php echo $script; ?>" method="POST">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="forma">Marca</label>
-                    <input type="text" class="form-control" id="forma" name="forma" value="<?php echo $data['forma']; ?>" required>
+                    <label for="forma">Forma</label>
+                    <input type="text" class="form-control" id="forma" name="forma" value="<?php echo $data['forma']; ?>" autofocus required>
                   </div>
                 </div>
                 <!-- /.card-body -->

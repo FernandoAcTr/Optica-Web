@@ -37,10 +37,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo HOST_BASE; ?>/assets/img/diamante-m.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo HOST_BASE; ?>/img/usuarios/<?php echo $_SESSION['foto'] ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Maricela Tovar Aboytes</a>
+          <a href="#" class="d-block"><?php echo $_SESSION['nombre'] ?></a>
         </div>
       </div>
 

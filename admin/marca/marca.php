@@ -14,7 +14,7 @@ switch ($action) {
     ];
     $marca->setMarca($data['marca']);
     $marca->createMarca();
-    header('Location: marca.php');
+    header('Location: marca.php?action=form');
     break;
 
   case 'modify':

@@ -23,7 +23,7 @@
         */
        public function fetchAll()
        {
-           $sql = 'SELECT * from marca';
+           $sql = 'SELECT * from marca order by marca';
            $marcas = $this->execQuery($sql, null);
 
            return $marcas;

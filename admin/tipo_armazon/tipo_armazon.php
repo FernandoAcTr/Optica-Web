@@ -14,7 +14,7 @@ switch ($action) {
     ];
     $tipo_armazon->setTipoArmazon($data['tipo_armazon']);
     $tipo_armazon->createTipoArmazon();
-    header('Location: tipo_armazon.php');
+    header('Location: tipo_armazon.php?action=form');
     break;
 
   case 'modify':

@@ -46,7 +46,7 @@ class Sistema extends Database
         $this->connect();
         $_SESSION['validado'] = false;
 
-        $sql = 'SELECT id_usuario, correo, nombre, foto from usuario where correo = ? and contrasena = ?';
+        $sql = "SELECT id_usuario, correo, nombre, COALESCE(foto, 'no-foto.jpg') as foto from usuario where correo = ? and contrasena = ?";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->execute([$correo, $contrasena]);

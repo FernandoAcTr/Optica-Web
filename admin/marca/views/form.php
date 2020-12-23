@@ -22,7 +22,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="marca">Marca</label>
-                    <input type="text" class="form-control" id="marca" name="marca" value="<?php echo $data['marca']; ?>" required>
+                    <input type="text" class="form-control" id="marca" name="marca" value="<?php echo $data['marca']; ?>" autofocus required>
                   </div>
                 </div>
                 <!-- /.card-body -->

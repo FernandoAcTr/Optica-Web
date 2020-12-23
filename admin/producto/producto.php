@@ -31,7 +31,7 @@ switch ($action) {
     $producto->setPrecio($_POST['precio']);
     $producto->setFoto($_FILES['foto']);
     $producto->createProducto();
-    header('Location: producto.php');
+    header('Location: producto.php?action=form');
     break;
 
   case 'modify':
@@ -60,11 +60,11 @@ switch ($action) {
       'precio' => '',
       'descripcion' => '',
       'color' => '',
-      'talla' => '',
-      'longitud_varilla' => '',
-      'ancho_puente' => '',
-      'ancho_total' => '',
-      'sku' => '',
+      'talla' => rand(53,58),
+      'longitud_varilla' => rand(140,150),
+      'ancho_puente' => rand(15,21),
+      'ancho_total' => rand(120,140),
+      'sku' => strtoupper(substr(md5(sha1('sku').rand(1, 10000)), 0, 8)),
       'foto' => '',
       'id_marca' => '',
       'id_categoria' => '',

@@ -15,7 +15,7 @@
   <h2 class="text-center separador">¡Encuentra lo que estas buscando!</h2>
 
   <div class="row">
-    <div class="col-md-3">
+    <aside class="col-md-3">
       <p class="h3">Filtrar por</p>
       <hr>
       <div class="filtro">
@@ -30,7 +30,7 @@
           <li class="list-group-item"><a href="#" class="">Lentes de Sol</a></li>
         </ul>
       </div>
-    </div>
+    </aside>
 
     <div class="col-md-9">
 
@@ -52,7 +52,7 @@
 
           <div class="producto">
             <p class="description">Carrera 8033/GS</p>
-            <img src="productos/oftalmicos2.jpg" alt="Imagen del producto">
+            <img src="img/productos/oftalmicos2.jpg" alt="Imagen del producto">
             <div class="contenido-producto">
               <p class="marca">Carrera</p>
               <div class="division"><span></span></div>

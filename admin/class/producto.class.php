@@ -138,6 +138,7 @@
 
        public function modifyProducto()
        {
+           $antiguo = $this->readOneProducto();
            $this->connect();
            $this->conn->beginTransaction();
            try {
@@ -157,6 +158,7 @@
                    $stmt = $this->conn->prepare($sql);
                    $stmt->execute([$this->color, $this->talla, $this->longitud_varilla, $this->ancho_puente, $this->ancho_total, $this->sku, $this->id_producto]);
                }
+               $this->deletePicture($antiguo['foto']);
                $this->conn->commit();
            } catch (\Throwable $th) {
                $this->conn->rollback();
@@ -173,12 +175,10 @@
                $params = [$this->id_producto];
                $this->execStmt($sql, $params);
 
-               if (strcmp($producto['foto'], 'no-foto.jpg') != 0) {
-                   $this->deletePicture($producto['foto']);
-               }
+               $this->deletePicture($producto['foto']);
            } catch (\Throwable $th) {
                $mensaje = 'No puedes eliminar un producto que ya se ha comprado antes. Elimina todas las compras en donde se encuentre registrado';
-               die ($mensaje);
+               die($mensaje);
            }
        }
 
@@ -230,7 +230,9 @@
        private function deletePicture($name)
        {
            try {
-               unlink('../../img/productos/'.$name);
+               if (strcmp($name, 'no-foto.jpg') != 0) {
+                   unlink('../../img/productos/'.$name);
+               }
            } catch (\Throwable $th) {
            }
        }

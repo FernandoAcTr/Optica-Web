@@ -70,7 +70,7 @@
 
                   <div class="form-group">
                     <label for="color">Color</label>
-                    <input type="text" class="form-control" id="color" name="color" value="<?php echo $data['color']; ?>" required>
+                    <input type="text" class="form-control" id="color" name="color" value="<?php echo $data['color']; ?>">
                   </div>
 
                   <div class="form-group">
