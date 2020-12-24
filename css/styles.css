@@ -371,6 +371,10 @@ h3,
 }
 .recomendacion .nombre {
   font-size: 0.9rem;
+  height: 5rem;
+}
+.recomendacion img {
+  max-height: 10rem;
 }
 /* =============================================== */
 
@@ -460,10 +464,10 @@ p.respuesta {
   background-image: url(../assets/img/tienda-banner.jpg);
 }
 .producto {
-  margin: 3rem auto;
+  margin: 3rem 0;
   text-align: center;
 }
-.producto .description {
+.producto .marca {
   background-color: var(--third-color-dark);
   padding: 0.5rem;
   text-transform: uppercase;
@@ -477,11 +481,12 @@ p.respuesta {
   margin-top: 0.8rem;
 }
 .contenido-producto {
-  padding: 3rem;
+  padding: 1rem;
 }
-.contenido-producto .marca {
+.contenido-producto .description {
   text-align: right;
   text-transform: uppercase;
+  font-size: 0.8rem;
 }
 .contenido-producto .precio {
   margin: 0;
@@ -499,6 +504,9 @@ p.respuesta {
   width: 1rem;
   background-color: #000;
   margin: 0 0.4rem 0.6rem 0;
+}
+.category-active {
+  color: var(--secondary-color-dark);
 }
 
 /* Aside */
@@ -533,7 +541,7 @@ p.respuesta {
   margin: 4rem auto;
 }
 .detalle img {
-  border: 1px solid #e1e1e1
+  border: 1px solid #e1e1e1;
 }
 .detalles .marca {
   text-transform: uppercase;
@@ -572,8 +580,8 @@ p.respuesta {
   padding: 2rem;
   border-radius: 1rem;
 }
-@media (min-width: 768px){
-  .detalle .info{
+@media (min-width: 768px) {
+  .detalle .info {
     grid-template-columns: repeat(2, 15rem);
   }
 }

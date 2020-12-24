@@ -23,11 +23,8 @@
           <p>Categoria</p>
           <i class="fas fa-plus small"></i>
         </div>
-        <ul class="categorias list-group">
-          <li class="list-group-item"><a href="#" class="">Todos</a></li>
-          <li class="list-group-item"><a href="#" class="">Anteojos Oftálmicos</a></li>
-          <li class="list-group-item"><a href="#" class="">Lentes de Seguridad</a></li>
-          <li class="list-group-item"><a href="#" class="">Lentes de Sol</a></li>
+        <ul class="categorias list-group" id="categorias">
+          <!-- Se agregan Campos mediante AJAX -->
         </ul>
       </div>
     </aside>
@@ -36,40 +33,36 @@
 
       <div class="orden d-flex">
         <label class="col-form-label">Ordenar por</label>
-        <select id="orden" class="form-control">
-          <option value="">Lo más nuevo</option>
-          <option value="">Precio (de bajo a alto)</option>
-          <option value="">Precio (de alto a bajo)</option>
-          <option value="">Nombre de A-Z</option>
-          <option value="">Nombre de Z-A</option>
+        <select id="select_order" class="form-control">
+          <option value="0">--Seleccione--</option>
+          <option value="1">Precio (de bajo a alto)</option>
+          <option value="2">Precio (de alto a bajo)</option>
+          <option value="3">Marca de A-Z</option>
+          <option value="4">Marca de Z-A</option>
         </select>
       </div>
 
       <div class="row productos">
+        <!-- Se agregan productos mediante AJAX -->
 
-        <?php for ($i = 1; $i <= 9; ++$i):?>
-        <div class="col-md-4">
-
-          <div class="producto">
-            <p class="description">Carrera 8033/GS</p>
-            <img src="img/productos/oftalmicos2.jpg" alt="Imagen del producto">
-            <div class="contenido-producto">
-              <p class="marca">Carrera</p>
-              <div class="division"><span></span></div>
-              <p class="precio">$5500</p>
-            </div>
-            <div class="row justify-content-around">
-              <a href="#" class="btn btn-sm btn-primary">
-                <i class="fas fa-cart-plus"></i>Lo quiero
-              </a>
-              <a href="detalle-producto.php" class="btn btn-sm btn-info">
-                <i class="fas fa-caret-square-right"></i>Ver más
-              </a>
-            </div>
+        <!-- <div class="col-md-4 producto">
+          <p class="marca">Carrera 8033/GS</p>
+          <img src="img/productos/5fe2d1f2c402e.jpeg" alt="Imagen del producto">
+          <div class="contenido-producto">
+            <p class="description">Carrera</p>
+            <div class="division"><span></span></div>
+            <p class="precio">$5500</p>
           </div>
+          <div class="row justify-content-around">
+            <a href="#" class="btn btn-sm btn-primary">
+              <i class="fas fa-cart-plus"></i>Lo quiero
+            </a>
+            <a href="detalle-producto.php" class="btn btn-sm btn-info">
+              <i class="fas fa-caret-square-right"></i>Ver más
+            </a>
+          </div>
+        </div> -->
 
-        </div>
-        <?php endfor; //Fin del ciclo?>
       </div>
 
     </div>
@@ -77,8 +70,13 @@
   </div>
 
   <!-- inicio PAGINACION -->
+
   <nav aria-label="Page navigation">
+
     <ul class="pagination justify-content-end">
+      <li class="d-flex">
+        <p class="mr-5 my-auto text-muted small">Se muestran 1 de 10 de 83 resultados</p>
+      </li>
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>

@@ -57,6 +57,7 @@
 
 <!-- Main -->
 <script src="js/main.js"></script>
+<script src="js/tienda.js"></script>
 
 
 

@@ -111,32 +111,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=cuadrada');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->
@@ -162,32 +150,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=rectangular');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->
@@ -212,32 +188,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=ovalada');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->
@@ -261,32 +225,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=redonda');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->
@@ -295,9 +247,9 @@
 <section class="container seccion-forma-cara">
   <h4 class="text-uppercase">Forma Triangular</h4>
   <p class="text-muted">
-    Tienen casi la misma medida de largo que de ancho, las mejillas son más anchas que la medida de la frente y la línea de la mandíbula, el mentón es curvo y
-    redondo. Las caras redondas se ven mejor con los marcos que tienen ángulos pronunciados, como los cuadrados y rectangulares. Estos suelen hacer que esta se
-    vea más larga e interrumpen su suavidad. Si tienes una cara muy rellena, considera los rectángulos horizontales, que hacen que se vea más delgada.</p>
+    Son ligeramente más largas que anchas, su mentón es relativamente estrecho, delgado y largo. Las caras triangulares se ven geniales con los lentes que
+    destacan la mitad superior del marco, como los semi al aire o los ascendentes, o que tienen dos tonos, siendo la parte de arriba más oscura que la de abajo,
+    también lentes metálicos delgados o armazones de plástico transparente, así lograrás equilibrar tu rostro.</p>
   <div class="row">
     <div class="col-md-6">
       <img src="assets/img/triangular-m.jpg" alt="Rostro triangular mujer">
@@ -310,32 +262,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=triangular');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->
@@ -359,32 +299,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=diamante');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->
@@ -408,32 +336,20 @@
 <!-- FIN FORMA -->
 
 <!-- RECOMENDACIONES -->
+<?php
+   $productos = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=face&face=corazon');
+   $productos = json_decode($productos, true);
+?>
 <div class="recomendaciones container">
   <p class="h5 text-uppercase text-center text-muted">Te mostramos algunas recomendaciones</p>
   <div class="row">
+    <?php foreach ($productos['products'] as $producto):?>
     <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c1.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
+      <p class="nombre"><?php echo $producto['descripcion'] ?></p>
+      <img src="img/productos/<?php echo $producto['foto'] ?>" alt="Recomendacion">
+      <a href="detalle-producto.php?id_producto=<?php echo $producto['id_producto'] ?>" class="btn btn-primary">COMPRAR</a>
     </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c2.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c3.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
-
-    <div class="col-md-3 recomendacion">
-      <p class="nombre">MICHAEL KORS LENTE NEGRO</p>
-      <img src="assets/img/dummy/c4.jpg" alt="Recomendacion">
-      <a href="detalle-producto.php" class="btn btn-primary">COMPRAR</a>
-    </div>
+    <?php endforeach; //Fin del ciclo foreach?>
   </div>
 </div>
 <!-- FIN RECOMENDACIONES -->

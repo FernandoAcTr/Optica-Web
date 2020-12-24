@@ -198,10 +198,14 @@
 
        public function readOneProducto()
        {
-           $sql = "SELECT p.*, pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku, COALESCE(pd.foto, 'no-foto.jpg') as foto
-            from producto p
-            JOIN producto_detalle pd using(id_producto)
-            WHERE id_producto = ?";
+           $sql = "SELECT p.*, pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  m.marca, c.categoria, f.forma, ta.tipo_armazon, COALESCE(pd.foto, 'no-foto.jpg') as foto  
+           from producto p
+           JOIN producto_detalle pd on p.id_producto = pd.id_producto
+           JOIN marca m on m.id_marca = p.id_marca
+           JOIN categoria c on c.id_categoria = p.id_categoria
+           JOIN forma f on f.id_forma = p.id_forma
+           JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon
+           WHERE p.id_producto = ?";
            $productos = $this->execQuery($sql, [$this->id_producto]);
 
            return $productos[0];
@@ -243,18 +247,20 @@
 
        /**
         * showPaginate.
-        * Entrega un array con todos los productos de manera paginada. 
-        * Es posible clasificar los productos por categoria y ordenarlos 
-        * bajo ciertos criterios, si se pasa un codigo numerico a la funcion
-        * @param	mixed	$page - La pagina que se desea consultar  	
-        * @param	mixed	$orderBy - Valor numerico del 1 al 4 que representa un criterior de ordenacion	
+        * Entrega un array con todos los productos de manera paginada.
+        * Es posible clasificar los productos por categoria y ordenarlos
+        * bajo ciertos criterios, si se pasa un codigo numerico a la funcion.
+        *
+        * @param	mixed	$page - La pagina que se desea consultar
+        * @param	mixed	$orderBy - Valor numerico del 1 al 4 que representa un criterior de ordenacion
         * @param	mixed	$filter - Valor numerico que representa el id de la categoria o 0 para todos los productos
+        *
         * @return	array   arreglo con todos los productos encontrados
         */
        public function showPaginate($page, $orderBy, $filter)
        {
            //datos de las paginas
-           $pageSize = 10;
+           $pageSize = 9;
            $page = (int) (isset($page) ? $page : 1);
            $start = (int) (isset($page) ? ($page - 1) * $pageSize : 0);
 
@@ -331,5 +337,50 @@
            ];
 
            return $categorias;
+       }
+
+       public function getProductsPerFace($face)
+       {
+           $sql = 'SELECT p.id_producto, p.descripcion, m.marca, c.categoria, f.forma, ta.tipo_armazon, pd.foto 
+           from producto p
+           JOIN producto_detalle pd on p.id_producto = pd.id_producto
+           JOIN marca m on m.id_marca = p.id_marca
+           JOIN categoria c on c.id_categoria = p.id_categoria
+           JOIN forma f on f.id_forma = p.id_forma
+           JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon ';
+
+           switch ($face) {
+                case 'cuadrada':
+                $sql .= "WHERE f.forma in ('Redondo', 'Lagrima')";
+                    break;
+                case 'rectangular':
+                    $sql .= "WHERE f.forma in ('Cuadrada', 'Lagrima', 'Aviador')";
+                    break;
+
+                case 'ovalada':
+                    $sql .= "WHERE ta.tipo_armazon in ('Acetato', 'Metalico')";
+                    break;
+
+                case 'redonda':
+                    $sql .= "WHERE f.forma in ('Cuadrada')";
+                    break;
+
+                case 'triangular':
+                    $sql .= "WHERE ta.tipo_armazon in ('Ranurado', 'Volado')";
+                    break;
+
+                case 'diamante':
+                    $sql .= "WHERE f.forma in ('Cuadrada')";
+                    break;
+
+                case 'corazon':
+                    $sql .= "WHERE f.forma in ('Redondo')";
+                    break;
+            }
+
+           $sql .= " and c.categoria not in ('Accesorios', 'Lentes de Seguridad') ORDER BY rand() LIMIT 4";
+           $productos = $this->execQuery($sql, null);
+
+           return $productos;
        }
    }

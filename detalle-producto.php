@@ -12,26 +12,25 @@
 
   <div class="detalle">
     <div class="row">
-
-      <div class="col-md-7">
-        <img src="productos/carrera.jpg" alt="Imagen del producto">
+      <!-- Se llena la informacion con AJAX -->
+      
+      <!-- <div class="col-md-7">
+        <img src="img/productos/5fe2d1f2c402e.jpeg" alt="Imagen del producto">
       </div>
 
-      <div class="col-md-5">
-        <div class="detalles">
-          <h2 class="marca">CARRERA</h2>
-          <p class="sku">SKU: CARRERA 216/G/S J5GQT 51-20-145</p>
-          <p class="precio">$3,970.00</p>
-          <p class="cantidad">Cantidad</p>
-          <input type="number" class="form-control" min="1" value="1">
-          <a href="#" class="btn btn-primary">Agregar al carrito</a>
-        </div>
-      </div>
+      <div class="col-md-5 detalles">
+        <h2 class="marca">CARRERA</h2>
+        <p class="sku">SKU: CARRERA 216/G/S J5GQT 51-20-145</p>
+        <p class="precio">$3,970.00</p>
+        <p class="cantidad">Cantidad</p>
+        <input type="number" class="form-control" min="1" value="1">
+        <a href="#" class="btn btn-primary">Agregar al carrito</a>
+      </div> -->
 
     </div>
 
     <div class="info">
-      <p>Color</p>
+      <!-- <p>Color</p>
       <p>Dorado</p>
 
       <p>Talla</p>
@@ -47,10 +46,12 @@
       <p>123</p>
 
       <p>Tipo de Armazon</p>
-      <p>Ranurado</p>
+      <p>Ranurado</p> -->
     </div>
 
   </div>
+
+  <input type="hidden" value="<?php echo $_GET['id_producto']; ?>" id="id_producto">
 
 </main>
 

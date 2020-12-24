@@ -37,7 +37,7 @@
 
                     <?php foreach ($data as $row):?>
                     <tr>
-                      <td class="p-0 text-center"><img src="../../img/productos/<?php echo $row['foto']; ?>" alt="Imagen del producto" height="75"></td>
+                      <td class="p-0 text-center align-middle"><img src="../../img/productos/<?php echo $row['foto']; ?>" alt="Imagen del producto" height="75"></td>
                       <td><?php echo $row['descripcion']; ?></td>
                       <td><?php echo $row['tipo_armazon']; ?></td>
                       <td><?php echo $row['marca']; ?></td>
