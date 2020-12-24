@@ -236,4 +236,100 @@
            } catch (\Throwable $th) {
            }
        }
+
+       //==================================================
+       // Funciones para la API
+       //==================================================
+
+       /**
+        * showPaginate.
+        * Entrega un array con todos los productos de manera paginada. 
+        * Es posible clasificar los productos por categoria y ordenarlos 
+        * bajo ciertos criterios, si se pasa un codigo numerico a la funcion
+        * @param	mixed	$page - La pagina que se desea consultar  	
+        * @param	mixed	$orderBy - Valor numerico del 1 al 4 que representa un criterior de ordenacion	
+        * @param	mixed	$filter - Valor numerico que representa el id de la categoria o 0 para todos los productos
+        * @return	array   arreglo con todos los productos encontrados
+        */
+       public function showPaginate($page, $orderBy, $filter)
+       {
+           //datos de las paginas
+           $pageSize = 10;
+           $page = (int) (isset($page) ? $page : 1);
+           $start = (int) (isset($page) ? ($page - 1) * $pageSize : 0);
+
+           //criterio de ordenacion
+           $orderBy = $this->mapOrderBy($orderBy);
+
+           //filtro de categoria. Si no esta definido se pone en blanco
+           $where = isset($filter) && $filter != 0 ? " where p.id_categoria = $filter " : '';
+
+           $sql = "SELECT p.*, pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  m.marca, c.categoria, f.forma, ta.tipo_armazon, COALESCE(pd.foto, 'no-foto.jpg') as foto  
+           from producto p
+           JOIN producto_detalle pd on p.id_producto = pd.id_producto
+           JOIN marca m on m.id_marca = p.id_marca
+           JOIN categoria c on c.id_categoria = p.id_categoria
+           JOIN forma f on f.id_forma = p.id_forma
+           JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon
+           $where
+           $orderBy";
+
+           //Encontrar el total de productos sin paginar la busqueda
+           $totalProductos = $this->getNumProducts($sql);
+           $totalPages = ceil($totalProductos / $pageSize);
+
+           //paginar la busqueda
+           $sql .= "LIMIT $start,$pageSize";
+
+           $productos = $this->execQuery($sql, null);
+
+           return [
+               'page' => $page,
+               'totalProducts' => $totalProductos,
+               'totalPages' => $totalPages,
+               'start' => ($start + 1),
+               'end' => $start + $pageSize,
+               'pageSize' => $pageSize,
+               'items' => $productos,
+           ];
+       }
+
+       private function getNumProducts($sql)
+       {
+           $total = $this->execQuery($sql, null);
+
+           return count($total);
+       }
+
+       private function mapOrderBy($orderBy)
+       {
+           switch ($orderBy) {
+            case 1:
+              return ' order by precio asc ';
+
+            case 2:
+              return ' order by precio desc ';
+
+            case 3:
+              return ' order by marca asc ';
+
+            case 4:
+              return ' order by marca desc ';
+
+            default:
+              return ' order by id_producto ';
+          }
+       }
+
+       public function getCategories()
+       {
+           $sql = 'SELECT * from categoria';
+           $categorias = $this->execQuery($sql, null);
+           $categorias[count($categorias)] = [
+               'id_categoria' => '0',
+               'categoria' => 'Todos',
+           ];
+
+           return $categorias;
+       }
    }
