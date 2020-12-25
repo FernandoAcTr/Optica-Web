@@ -5,8 +5,9 @@
    1. Datatables
    2. Registro de Productos
    3. Validacion de formulario de registro de usuarios
-
+   4. Calendar para el dasboard
 */
+
 $(function () {
   // Datatables
   if ($('#tabla').length) {
@@ -129,4 +130,10 @@ $(function () {
       $('#guardar').prop('disabled', true);
     }
   }
+
+  //Calendar para el Dashboard
+  $('#calendar').datetimepicker({
+    format: 'L',
+    inline: true,
+  });
 });

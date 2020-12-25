@@ -28,6 +28,7 @@
                       <th>Categoria</th>
                       <th>Forma</th>
                       <th>Precio</th>
+                      <th>SKU</th>
                       <th>
                         <!--acciones-->
                       </th>
@@ -44,6 +45,7 @@
                       <td><?php echo $row['categoria']; ?></td>
                       <td><?php echo $row['forma']; ?></td>
                       <td><?php echo $row['precio']; ?></td>
+                      <td><?php echo $row['sku']; ?></td>
                       <td class="text-center">
                         <a href="producto.php?action=delete&id_producto=<?php echo $row['id_producto']; ?>" class='btn btn-danger' role='button'><i
                             class="fas fa-trash-alt"></i></a>
@@ -65,6 +67,7 @@
                       <th>Categoria</th>
                       <th>Forma</th>
                       <th>Precio</th>
+                      <th>SKU</th>
                       <th>
                         <!--acciones-->
                       </th>
