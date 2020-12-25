@@ -487,6 +487,7 @@ p.respuesta {
   text-align: right;
   text-transform: uppercase;
   font-size: 0.8rem;
+  min-height: 4rem;
 }
 .contenido-producto .precio {
   margin: 0;
@@ -679,17 +680,13 @@ p.respuesta {
   margin-top: 0.8rem;
 }
 
-.carrito .producto .marca,
 .carrito .producto .cantidad {
   text-transform: uppercase;
   color: #919191;
   text-align: left;
   margin: 0;
 }
-.carrito a {
-  color: #919191;
-  cursor: pointer;
-}
+
 .carrito .producto .precio {
   font-family: 'Raleway', sans-serif;
   text-align: left;

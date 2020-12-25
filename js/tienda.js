@@ -1,6 +1,10 @@
 /*
 En este archivo se hacen todas las peticiones AJAX para la pagina de la tienda
 */
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 
 $(function () {
   //==========================================================
@@ -62,9 +66,9 @@ $(function () {
               <p class="precio">$${producto.precio}</p>
             </div>
             <div class="row justify-content-around">
-              <a href="#" class="btn btn-sm btn-primary">
+              <button onclick="addItemToCart(${producto.id_producto})" class="btn btn-sm btn-primary">
                 <i class="fas fa-cart-plus"></i>Lo quiero
-              </a>
+              </button>
               <a href="detalle-producto.php?id_producto=${producto.id_producto}" class="btn btn-sm btn-info">
                 <i class="fas fa-caret-square-right"></i>Ver más
               </a>
@@ -138,17 +142,23 @@ $(function () {
         let producto = data.product;
         let detalle = `
         <div class="col-md-7">
-        <img src="img/productos/${producto.foto}" alt="Imagen del producto" width="550">
+        <img src="img/productos/${
+          producto.foto
+        }" alt="Imagen del producto" width="550">
         </div>
 
         <div class="col-md-5 detalles">
           <h2 class="marca">${producto.marca}</h2>
           <p class="sku">SKU: ${producto.sku}</p>
           <p class="text-muted">Descripcion: ${producto.descripcion}</p>
-          <p class="precio">$${producto.precio}</p>
+          <p class="precio" id="precio">${formatter.format(producto.precio)}</p>
           <p class="cantidad">Cantidad</p>
-          <input type="number" class="form-control" min="1" value="1">
-          <a href="#" class="btn btn-primary">Agregar al carrito</a>
+          <input type="number" class="form-control" min="1" value="1" id="quantity" onchange="actualizarTotal(${
+            producto.precio
+          })">
+          <button class="btn btn-primary" onclick="addManyToCart(${
+            producto.id_producto
+          })">Agregar al carrito</button>
         </div>`;
 
         let info = `
@@ -175,3 +185,14 @@ $(function () {
       });
   }
 });
+
+function actualizarTotal(precio) {
+  let cantidad = $('#quantity').val();
+  let total = cantidad * precio;
+  $('#precio').text(
+    total.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    })
+  );
+}

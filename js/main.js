@@ -9,7 +9,7 @@
    5. Scroll Reveal.js
    6. Preguntas Frecuentes
    7. Tienda
-   8. Menu Toggler
+   8. Menu Toggler Para el carrito
 
 */
 $(document).ready(function () {
@@ -104,7 +104,7 @@ $(document).ready(function () {
     });
   }
 
-  //Menu Toggler
+  //Menu Toggler Para el carrito
   $('.toggler').click(function (e) {
     e.preventDefault();
     $('#wrapper').toggleClass('untoggled');

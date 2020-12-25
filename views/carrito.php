@@ -6,8 +6,8 @@
   <div class="contenido-carrito">
 
     <ul class="list-group list-unstyled">
-      <?php for ($i = 0; $i < 4; ++$i):?>
-      <li class="producto">
+
+      <!-- <li class="producto">
         <div class="row">
           <div class="col-7">
             <img src="assets/img/dummy/c1.jpg" alt="">
@@ -22,15 +22,15 @@
           </div>
         </div>
       </li>
-      <hr>
-      <?php endfor; //Fin del ciclo foreach?>
+      <hr> -->
+
     </ul>
 
   </div>
 
   <footer>
-    <p>Subtotal</p>
-    <p class="precio">$4250.00</p>
+    <p>Total</p>
+    <p class="precio" id="total">$4250.00</p>
     <hr>
     <div class="d-flex justify-content-center">
       <a href="#" class="btn btn-primary w-75">Pagar</a>

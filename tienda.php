@@ -54,7 +54,7 @@
             <p class="precio">$5500</p>
           </div>
           <div class="row justify-content-around">
-            <a href="#" class="btn btn-sm btn-primary">
+            <a href="#" class="btn btn-sm btn-primary btn-add-to-cart">
               <i class="fas fa-cart-plus"></i>Lo quiero
             </a>
             <a href="detalle-producto.php" class="btn btn-sm btn-info">

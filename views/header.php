@@ -76,7 +76,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link toggler" href="contacto.php"><i class="fas fa-cart-plus mr-1"></i>(5)</a>
+                <a class="nav-link toggler" href="contacto.php" onclick="actualizarCarrito()"><i class="fas fa-cart-plus mr-1">(<span id="item-in-cart"></span>)</i></a>
               </li>
 
             </ul>
