@@ -1,5 +1,6 @@
 /**
- * Este script se ocupa de actualizar el carrito y agregar y remover items de él
+ * Este script se ocupa de actualizar la barra lateral del carrito y agregar y remover items de ella
+ * Cada que se pulsa sobre los botones de agregar o quitar un producto
  */
 
 var formatter = new Intl.NumberFormat('en-US', {

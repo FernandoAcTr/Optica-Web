@@ -59,10 +59,15 @@
 <!-- Seet Alert 2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+<!-- PAYPAL -->
+<script src="https://www.paypal.com/sdk/js?client-id=Afc5sJoHxQIsF9L7U2XbR-sjdx9BUjGK2sS552A-gmMtFcbMS4RRRhZWmGq7DSnPGOn9Zx7OGAM6MHeH&currency=MXN">
+</script>
+
 <!-- Main -->
 <script src="js/main.js"></script>
 <script src="js/tienda.js"></script>
 <script src="js/carrito.js"></script>
+<script src="js/pagar.js"></script>
 
 </body>
 

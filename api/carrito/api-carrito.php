@@ -59,7 +59,9 @@ function show($carrito)
 
     $itemsCarrito = $carrito->load();
     $fullItems = [];
+    $subtotal = 0;
     $total = 0;
+    $iva = 0;
     $totalItems = 0;
 
     // print_r();
@@ -69,9 +71,19 @@ function show($carrito)
         $response = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=oneProduct&id_producto='.$item['id']);
         $itemProducto = json_decode($response, true)['product'];
         $itemProducto['cantidad'] = $item['cantidad'];
-        $itemProducto['subtotal'] = $itemProducto['cantidad'] * $itemProducto['precio'];
 
-        $total += $itemProducto['subtotal'];
+        //obtener el total a pagar con todo e IVA
+        $itemProducto['total'] = $itemProducto['cantidad'] * $itemProducto['precio'];
+
+        //Obtener el precio unitario sin el IVA de cada item
+        $itemProducto['precio_unitario'] = round($itemProducto['precio'] * 0.84, 2);
+        $itemProducto['subtotal'] = $itemProducto['precio_unitario'] * $itemProducto['cantidad'];
+        $itemProducto['iva'] = round($itemProducto['total'] - $itemProducto['subtotal'], 2);
+
+        //Obtener datos generales de la compra
+        $iva += $itemProducto['iva'];
+        $subtotal += $itemProducto['subtotal'];
+        $total += $itemProducto['total'];
         $totalItems += $itemProducto['cantidad'];
 
         $fullItems[] = $itemProducto;
@@ -81,6 +93,8 @@ function show($carrito)
         'info' => [
           'count' => $totalItems,
           'total' => $total,
+          'subtotal' => round($subtotal, 2),
+          'IVA' => round($iva, 2),
         ],
         'items' => $fullItems,
       ];

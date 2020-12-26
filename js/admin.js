@@ -1,11 +1,12 @@
 /*
+   Este script configura todos los plugins que se ocupan en AdminLTE
    
    Table Of Content
    
    1. Datatables
    2. Registro de Productos
    3. Validacion de formulario de registro de usuarios
-   4. Calendar para el dasboard
+   4. Calendar para el dashboard
 */
 
 $(function () {

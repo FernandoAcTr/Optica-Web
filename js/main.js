@@ -1,5 +1,7 @@
 /*
-   
+   Este Script configura todos los plugins que se ocupan en la parte de la pagina del negocio
+   Ademas se encarga de algunas animaciones como la de la barra del carrito y las FAQ
+
    Table Of Content
    
    1. Preloader
