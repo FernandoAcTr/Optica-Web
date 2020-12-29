@@ -76,7 +76,8 @@ $(function () {
           return actions.order.capture().then(function (details) {
             console.log(details);
 
-            //TODO guardar la compra en la base de datos
+            //guardar la compra en la base de datos
+            savePurchase(details);
 
             Swal.fire(
               'Perfecto!',
@@ -88,7 +89,8 @@ $(function () {
           });
         },
         onCancel: function (data) {
-          //TODO agregar un registro a la base de datos de compra cancelada
+          //agregar un registro a la base de datos de compra cancelada
+          saveCancelPurchase(data);
 
           console.log(data);
           Swal.fire(
@@ -159,5 +161,70 @@ $(function () {
     });
 
     return order;
+  }
+
+  async function savePurchase(purchase) {
+    let payer = purchase.payer;
+    let address = purchase.purchase_units[0].shipping.address;
+    let data = {
+      id_cliente: payer.payer_id,
+      email: payer.email_address,
+      nombre: payer.name,
+      apellido: payer.surname,
+      calle: address.address_line_1,
+      colonia: address.address_line_2,
+      ciudad: address.admin_area_1,
+      cod_postal: address.postal_code,
+      id_venta: purchase.id,
+      fecha: purchase.create_time.substr(0, 10),
+      status: 'COMPLETED',
+      items: [],
+    };
+
+    //Obtener los items del carrito y agregarlos a la data
+    var response = await fetch(
+      'http://localhost/PrograWeb/Optica/api/carrito/api-carrito.php?action=show'
+    );
+    var respJSON = await response.json();
+    var items = respJSON.items;
+    items.forEach((item) => {
+      let producto = {
+        id_producto: item.id_producto,
+        cantidad: item.cantidad,
+      };
+      data.items.push(producto);
+    });
+
+    //Mandar la data en JSON a la API
+    var form = new FormData();
+    form.append('data', JSON.stringify(data));
+    response = await fetch(
+      'http://localhost/PrograWeb/Optica/api/venta/api-venta.php?action=createVenta',
+      {
+        method: 'POST',
+        body: form,
+      }
+    );
+    respJSON = await response.json();
+    console.log(respJSON);
+  }
+
+  async function saveCancelPurchase(purchase) {
+    let data = {
+      id_venta: purchase.orderID,
+      status: 'CANCELLED',
+    };
+
+    var form = new FormData();
+    form.append('data', JSON.stringify(data));
+    response = await fetch(
+      'http://localhost/PrograWeb/Optica/api/venta/api-venta.php?action=createVenta',
+      {
+        method: 'POST',
+        body: form,
+      }
+    );
+    respJSON = await response.json();
+    console.log(respJSON);
   }
 });

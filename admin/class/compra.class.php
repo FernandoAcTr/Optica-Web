@@ -63,7 +63,7 @@ class Compra extends Database
                 $stmt->execute([$compra['id_compra'], $id_producto, $producto['cantidad'], $producto['precio']]);
             }
 
-            //Modificar el inventario de cada producto
+            //Aumentar el inventario de cada producto
             $sql = 'UPDATE inventario set stock = stock + ? where id_producto = ?';
             $stmt = $this->conn->prepare($sql);
             foreach ($this->productos as $id_producto => $producto) {
