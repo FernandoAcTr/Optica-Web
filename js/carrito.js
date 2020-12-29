@@ -54,9 +54,12 @@ function addItemToCart(idProducto) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log('agregado');
-      actualizarCarrito();
-      Swal.fire('Perfecto!', 'Se agregó el producto al carrito!', 'success');
+      if (data.ok) {
+        actualizarCarrito();
+        Swal.fire('Perfecto!', 'Se agregó el producto al carrito!', 'success');
+      } else {
+        Swal.fire('Lo sentimos :(', data.error, 'warning');
+      }
     });
 }
 
@@ -85,19 +88,21 @@ function actualizarItemsNumber() {
 //==========================================================
 function addManyToCart(idProducto) {
   let cantidad = $('#quantity').val();
-  for (let i = 0; i < cantidad; i++) {
-    fetch(
-      `http://localhost/PrograWeb/Optica/api/carrito/api-carrito.php?action=add&id=${idProducto}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('agregado');
-      });
-  }
-  actualizarCarrito();
-  Swal.fire(
-    'Perfecto!',
-    `Se agregaron ${cantidad} existencias del producto al carrito!`,
-    'success'
-  );
+  fetch(
+    `http://localhost/PrograWeb/Optica/api/carrito/api-carrito.php?action=add&id=${idProducto}&cantidad=${cantidad}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      if (data.ok) {
+        actualizarCarrito();
+        Swal.fire(
+          'Perfecto!',
+          `Se agregaron ${cantidad} existencias del producto al carrito!`,
+          'success'
+        );
+      } else {
+        Swal.fire('Lo sentimos :(', data.error, 'warning');
+      }
+    });
 }

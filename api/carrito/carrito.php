@@ -25,14 +25,14 @@ class Carrito
      * Entonces al modificar sus propiedades no se modifican las propiedades del objeto en el arreglo.
      * Se tiene que acceder directamente a la dimension $items[posicion][cantidad] y no a $item[cantidad].
      */
-    public function add($id)
+    public function add($id, $cantidad)
     {
         //Buscamos que el elemento no este en el carrito. Si esta solo aumentamos la cantidad
         $items = $this->load();
         $i = 0;
         foreach ($items as $item) {
             if ($item['id'] == $id) {
-                ++$items[$i]['cantidad'];
+                $items[$i]['cantidad'] += $cantidad;
 
                 $this->setItems($items);
 
@@ -72,5 +72,17 @@ class Carrito
         }
 
         return $this->load();
+    }
+
+    public function getNumberItems($id)
+    {
+        $items = $this->load();
+        foreach ($items as $item) {
+            if ($item['id'] == $id) {
+                return $item['cantidad'];
+            }
+        }
+
+        return 0;
     }
 }

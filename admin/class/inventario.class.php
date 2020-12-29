@@ -8,7 +8,8 @@ class Inventario extends Database
         $sql = 'SELECT i.*, p.descripcion, pd.foto 
         FROM inventario i
         JOIN producto p on p.id_producto = i.id_producto
-        JOIN producto_detalle pd on pd.id_producto = p.id_producto';
+        JOIN producto_detalle pd on pd.id_producto = p.id_producto
+        order by i.stock desc';
 
         return $this->execQuery($sql, null);
     }

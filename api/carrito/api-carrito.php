@@ -29,9 +29,21 @@ if (isset($_GET['action'])) {
 
 function add($carrito)
 {
+    $cantidad = isset($_GET['cantidad']) ? $_GET['cantidad'] : 1;
+    $idProducto = $_GET['id'];
+
     if (isset($_GET['id'])) {
-        $res = $carrito->add($_GET['id']);
-        echo json_encode($res);
+        $response = file_get_contents('http://localhost/PrograWeb/Optica/api/productos/api-productos.php?action=oneProduct&id_producto='.$idProducto);
+        $producto = json_decode($response, true)['product'];
+        if (($producto['stock'] - $carrito->getNumberItems($idProducto)) >= $cantidad) {
+            $res = $carrito->add($idProducto, $cantidad);
+            echo json_encode(['ok' => true, 'aggregated' => $res]);
+        } else {
+            echo json_encode([
+            'ok' => false,
+            'error' => 'No hay productos suficientes para satifacer tu pedido',
+          ]);
+        }
     } else {
         echo json_encode([
           'ok' => false,
@@ -44,7 +56,7 @@ function remove($carrito)
 {
     if (isset($_GET['id'])) {
         $res = $carrito->remove($_GET['id']);
-        echo json_encode($res);
+        echo json_encode(['ok' => true, 'deleted' => $res]);
     } else {
         echo json_encode([
             'ok' => false,

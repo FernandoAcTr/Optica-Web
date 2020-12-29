@@ -83,7 +83,7 @@ $(function () {
               'El pago se realizó con Exito. Gracias por su preferencia!',
               'success'
             ).then((result) => {
-              window.location = 'index.php';
+              // window.location = 'index.php';
             });
           });
         },

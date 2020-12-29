@@ -139,6 +139,7 @@ $(function () {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         let producto = data.product;
         let detalle = `
         <div class="col-md-7">
@@ -152,6 +153,7 @@ $(function () {
           <p class="sku">SKU: ${producto.sku}</p>
           <p class="text-muted">Descripcion: ${producto.descripcion}</p>
           <p class="precio" id="precio">${formatter.format(producto.precio)}</p>
+          <p class="text-danger small">Nos quedan ${producto.stock} unidades</p>
           <p class="cantidad">Cantidad</p>
           <input type="number" class="form-control" min="1" value="1" id="quantity" onchange="actualizarTotal(${
             producto.precio
@@ -181,7 +183,8 @@ $(function () {
         <p>${producto.tipo_armazon}</p>`;
 
         $('.detalle .row').html(detalle);
-        $('.info').html(info);
+        if (producto.categoria !== 'Accesorios') $('.info').html(info);
+        else $('.info').remove();
       });
   }
 });

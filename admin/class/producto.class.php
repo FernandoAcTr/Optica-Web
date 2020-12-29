@@ -198,13 +198,16 @@
 
        public function readOneProducto()
        {
-           $sql = "SELECT p.*, pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  m.marca, c.categoria, f.forma, ta.tipo_armazon, COALESCE(pd.foto, 'no-foto.jpg') as foto  
+           $sql = "SELECT p.id_producto, p.precio, p.descripcion, 
+           pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  
+           m.marca, c.categoria, f.forma, ta.tipo_armazon, i.stock, COALESCE(pd.foto, 'no-foto.jpg') as foto  
            from producto p
            JOIN producto_detalle pd on p.id_producto = pd.id_producto
            JOIN marca m on m.id_marca = p.id_marca
            JOIN categoria c on c.id_categoria = p.id_categoria
            JOIN forma f on f.id_forma = p.id_forma
            JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon
+           JOIN inventario i on i.id_producto = p.id_producto
            WHERE p.id_producto = ?";
            $productos = $this->execQuery($sql, [$this->id_producto]);
 
