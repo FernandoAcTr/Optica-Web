@@ -27,6 +27,26 @@ $sql = 'SELECT sum(stock) as stock FROM inventario';
 $stock = $database->execQuery($sql, null)[0];
 $stock = $stock['stock'];
 
+//contar las ventas realizadas en la pagina
+$sql = "SELECT COUNT(*) as ventas from venta where tipo like 'Paypal' and status like 'COMPLETED'";
+$ventasPaypal = $database->execQuery($sql, null)[0];
+$ventasPaypal = $ventasPaypal['ventas'];
+
+//contar las ventas canceladas
+$sql = "SELECT COUNT(*) as ventas_canceladas from venta where status like 'CANCELLED'";
+$ventasCanceladas = $database->execQuery($sql, null)[0];
+$ventasCanceladas = $ventasCanceladas['ventas_canceladas'];
+
+//contar el numero de clientes de la pagina
+$sql = "SELECT COUNT(*) as clientes from cliente where tipo like 'Paypal'";
+$clientesPaypal = $database->execQuery($sql, null)[0];
+$clientesPaypal = $clientesPaypal['clientes'];
+
+//contar el numero de clientes totales
+$sql = "SELECT COUNT(*) as clientes from cliente";
+$clientes = $database->execQuery($sql, null)[0];
+$clientes = $clientes['clientes'];
+
 //Obtener los ultimos 4 productos agregados
 $sql = "SELECT p.*, pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  m.marca, c.categoria, f.forma, ta.tipo_armazon, COALESCE(pd.foto, 'no-foto.jpg') as foto  
 from producto p

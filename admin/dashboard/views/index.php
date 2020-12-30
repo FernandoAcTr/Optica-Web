@@ -19,7 +19,7 @@
                   <div class="inner">
                     <h3><?php echo $productos; ?></h3>
 
-                    <p>Productos ofrecidos</p>
+                    <p>Productos distintos ofrecidos</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -65,6 +65,69 @@
                     <h3><?php echo $stock; ?></h3>
 
                     <p>Productos en stock</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-android-clipboard"></i>
+                  </div>
+                  <a href="../inventario/inventario.php" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <!-- ./col -->
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3><?php echo $ventasPaypal; ?></h3>
+
+                    <p>Ventas completadas en la página</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-bag"></i>
+                  </div>
+                  <a href="../venta/venta.php" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                  <div class="inner">
+                    <h3><?php echo $ventasCanceladas; ?></h3>
+
+                    <p>Ventas canceladas</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="../venta/venta.php" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3><?php echo $clientesPaypal; ?></h3>
+
+                    <p>Clientes registrados en la página</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-social-markdown"></i>
+                  </div>
+                  <a href="../cliente/cliente.php" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <!-- ./col -->
+              <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3><?php echo $clientes; ?></h3>
+
+                    <p>Clientes totales</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-android-clipboard"></i>
@@ -129,13 +192,13 @@
                       <?php foreach ($ultimosProductos as $producto):?>
                       <li class="item">
                         <div class="product-img">
-                          <img src="../../img/productos/<?php echo $producto['foto'] ?>" alt="Product Image" class="img-size-50">
+                          <img src="../../img/productos/<?php echo $producto['foto']; ?>" alt="Product Image" class="img-size-50">
                         </div>
                         <div class="product-info">
-                          <a href="javascript:void(0)" class="product-title"><?php echo $producto['marca'] ?>
-                            <span class="badge badge-warning float-right">$<?php echo $producto['precio'] ?></span></a>
+                          <a href="javascript:void(0)" class="product-title"><?php echo $producto['marca']; ?>
+                            <span class="badge badge-warning float-right">$<?php echo $producto['precio']; ?></span></a>
                           <span class="product-description">
-                            <?php echo $producto['descripcion'] ?>
+                            <?php echo $producto['descripcion']; ?>
                           </span>
                         </div>
                       </li>

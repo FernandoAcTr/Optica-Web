@@ -9,7 +9,7 @@
         <a href="<?php echo HOST_BASE; ?>/index.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo HOST_BASE; ?>/admin/login/login.php?action=logout"class="nav-link">Salir</a>
+        <a href="<?php echo HOST_BASE; ?>/admin/login/login.php?action=logout" class="nav-link">Salir</a>
       </li>
     </ul>
 
@@ -37,10 +37,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo HOST_BASE; ?>/img/usuarios/<?php echo $_SESSION['foto'] ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo HOST_BASE; ?>/img/usuarios/<?php echo $_SESSION['foto']; ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block"><?php echo $_SESSION['nombre'] ?></a>
+          <a href="#" class="d-block"><?php echo $_SESSION['nombre']; ?></a>
         </div>
       </div>
 
@@ -124,6 +124,50 @@
             </ul>
           </li>
 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-paypal"></i>
+              <p>
+                Clientes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOST_BASE; ?>/admin/cliente/cliente.php" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todos</p>
+                </a>
+                <a href="<?php echo HOST_BASE; ?>/admin/cliente/cliente.php?action=form" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Registrar Cliente</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Ventas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOST_BASE; ?>/admin/venta/venta.php" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>Ver todas</p>
+                </a>
+                <a href="<?php echo HOST_BASE; ?>/admin/venta/venta.php?action=form" class="nav-link">
+                  <i class="fas fa-plus-circle nav-icon"></i>
+                  <p>Registrar Venta</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="<?php echo HOST_BASE; ?>/admin/inventario/inventario.php" class="nav-link">
               <i class="nav-icon fas fa-warehouse"></i>
@@ -132,7 +176,6 @@
               </p>
             </a>
           </li>
-
 
           <li class="nav-header">Catálogos</li>
 

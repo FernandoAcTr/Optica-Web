@@ -33,8 +33,8 @@
                     <input type="text" class="form-control" id="domicilio" name="domicilio" value="<?php echo $data['domicilio']; ?>" required>
                   </div>
                   <div class="form-group">
-                    <label for="domicilio">Telefono</label>
-                    <input type="tel" class="form-control" id="domicilio" name="telefono" value="<?php echo $data['telefono']; ?>" maxlength="10">
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $data['telefono']; ?>" maxlength="10">
                   </div>
                 </div>
                 <!-- /.card-body -->

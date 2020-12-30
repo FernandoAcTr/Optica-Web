@@ -33,7 +33,7 @@
 
       $venta = new Venta($id_venta, $fecha, $cliente, $status, $items);
 
-      if ($venta->createVenta()) {
+      if ($venta->createVentaPaypal()) {
           $resp = [
             'ok' => true,
             'message' => 'La venta se ha registrado con exito',

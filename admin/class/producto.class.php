@@ -198,7 +198,7 @@
 
        public function readOneProducto()
        {
-           $sql = "SELECT p.id_producto, p.precio, p.descripcion, 
+           $sql = "SELECT p.*, 
            pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  
            m.marca, c.categoria, f.forma, ta.tipo_armazon, i.stock, COALESCE(pd.foto, 'no-foto.jpg') as foto  
            from producto p
@@ -236,11 +236,10 @@
 
        private function deletePicture($name)
        {
-           try {
-               if (strcmp($name, 'no-foto.jpg') != 0) {
+           if (strcmp($name, 'no-foto.jpg') != 0) {
+               if (file_exists('../../img/productos/'.$name)) {
                    unlink('../../img/productos/'.$name);
                }
-           } catch (\Throwable $th) {
            }
        }
 
