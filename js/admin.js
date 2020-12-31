@@ -8,7 +8,7 @@
    3. Validacion de formulario de registro de usuarios
    4. Calendar para el dashboard
    5. Registro de Productos Vendidos
-   6. Pie Chart JS
+   6. Chart JS
 */
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -16,7 +16,9 @@ var formatter = new Intl.NumberFormat('en-US', {
 });
 
 $(function () {
+  // ----------------------------------------------------------
   // Datatables
+  // ----------------------------------------------------------
   if ($('#tabla').length) {
     $('#tabla')
       .DataTable({
@@ -46,7 +48,9 @@ $(function () {
       .appendTo('#tabla_wrapper .col-md-6:eq(0)');
   }
 
+  // ----------------------------------------------------------
   //registro de productos comprados
+  // ----------------------------------------------------------
   if ($('#table-products').length) {
     $('#btn-registrar').click(function (e) {
       e.preventDefault();
@@ -60,7 +64,9 @@ $(function () {
     });
   }
 
+  // ----------------------------------------------------------
   //Validacion de formulario de registro de usuarios
+  // ----------------------------------------------------------
   if ($('#contrasena').length) {
     $('#contrasena').keyup(validatePassword);
     $('#rep_contrasena').keyup(validatePassword);
@@ -70,13 +76,17 @@ $(function () {
     $('#correo').keyup(validarEmail);
   }
 
+  // ----------------------------------------------------------
   //Calendar para el Dashboard
+  // ----------------------------------------------------------
   $('#calendar').datetimepicker({
     format: 'L',
     inline: true,
   });
 
+  // ----------------------------------------------------------
   //registro de productos vendidos
+  // ----------------------------------------------------------
   if ($('#table-purchase-products').length) {
     $('#btn-registrar').click(function (e) {
       e.preventDefault();
@@ -96,10 +106,95 @@ $(function () {
     });
     updatePurchaseTotal();
   }
+
+  // ----------------------------------------------------------
+  //Chart JS
+  // ----------------------------------------------------------
+  // Sales chart
+  if ($('#dashboard').length) {
+    var salesChartData = {
+      labels: [
+        'Enero',
+        'Febrero',
+        'Marzo',
+        'Abril',
+        'Mayo',
+        'Junio',
+        'Julio',
+        'Agosto',
+        'Septiembre',
+        'Octubre',
+        'Noviembre',
+        'Diciembre',
+      ],
+      datasets: [
+        {
+          label: 'Ventas por mes',
+          backgroundColor: 'rgba(60,141,188,0.9)',
+          borderColor: 'rgba(60,141,188,0.8)',
+          pointRadius: true,
+          pointColor: '#3b8bba',
+          pointStrokeColor: 'rgba(60,141,188,1)',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          // data: [49, 20, 22, 65, 23, 12, 34, 76, 12, 87, 55, 34],
+        },
+      ],
+    };
+
+    var salesChartOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
+      legend: {
+        display: true,
+      },
+      scales: {
+        xAxes: [
+          {
+            gridLines: {
+              display: true,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            gridLines: {
+              display: true,
+            },
+            ticks: {
+              precision: 0,
+            },
+          },
+        ],
+      },
+    };
+
+    setSalesPerMonth(salesChartData, salesChartOptions);
+
+    // Donut Chart
+    var pieData = {
+      labels: ['En tienda', 'En la página'],
+      datasets: [
+        {
+          // data: [30, 12],
+          backgroundColor: ['#f56954', '#f39c12'],
+        },
+      ],
+    };
+    var pieOptions = {
+      legend: {
+        display: true,
+      },
+      maintainAspectRatio: false,
+      responsive: true,
+    };
+
+    setSalesPerPlace(pieData, pieOptions);
+  }
 });
 
 /**
- * Verifica que tanto la password como la repeticion de ella coincidan. 
+ * Verifica que tanto la password como la repeticion de ella coincidan.
  * Es usada al registrar un usuario en el sistema y en la ventana para recuperar la contraseña
  */
 function validatePassword(e) {
@@ -116,12 +211,12 @@ function validatePassword(e) {
 }
 
 /**
- * Verifica que un email cumpla con un patron estandar mediante una expresion regular 
+ * Verifica que un email cumpla con un patron estandar mediante una expresion regular
  * Es usada en la pagina para registrar usuarios del sistema
  */
 function validarEmail() {
   console.log($('#correo').val());
-  let isEmailCorrect
+  let isEmailCorrect;
   if (
     /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#correo').val())
   ) {
@@ -149,7 +244,7 @@ function enableButton(isEmailCorrect) {
 
 /**
  * Esta funcion agrega el precio a un input hidden cuando se registra en la pagina de venta
- * Esto con la funalidad de que se mande por medio de POST como un arreglo. 
+ * Esto con la funalidad de que se mande por medio de POST como un arreglo.
  */
 async function obtenerProductoPrecio() {
   let idProducto = $('#producto').val();
@@ -165,7 +260,7 @@ async function obtenerProductoPrecio() {
 }
 
 /**
- * Esta funcion agrega un nuevo producto a una tabla. 
+ * Esta funcion agrega un nuevo producto a una tabla.
  * Es llamada tanto en la pagina para registrar una compra como para registrar una venta
  */
 function addProductToTable() {
@@ -209,7 +304,7 @@ function addProductToTable() {
 }
 
 /**
- * Esta funcion es llamada cada que se agrega un producto en la pagina 
+ * Esta funcion es llamada cada que se agrega un producto en la pagina
  * para registrar una venta desde el administrador
  */
 function updatePurchaseTotal() {
@@ -230,7 +325,7 @@ function updatePurchaseTotal() {
 }
 
 /**
- * Esta funcion es llamada cada que cambia el number range de la pagina para vender un producto 
+ * Esta funcion es llamada cada que cambia el number range de la pagina para vender un producto
  * en AdminLTE. Si se intenta vender mas de un producto en stock aparece una advertencia
  * @param cantidad la cantidad que se quiere verificar
  */
@@ -252,4 +347,49 @@ async function verificarInventario(cantidad) {
   } else {
     $('#advertencia').addClass('d-none');
   }
+}
+
+async function setSalesPerMonth(salesData, salesChartOptions) {
+  let response = await fetch(
+    'http://localhost/PrograWeb/Optica/api/venta/api-venta.php?action=salesPerMonth'
+  );
+  let data = await response.json();
+
+  salesData.datasets[0].data = [];
+
+  data.sales.forEach((mes) => {
+    salesData.datasets[0].data.push(mes.ventas);
+  });
+
+  var salesChartCanvas = document
+    .getElementById('revenue-chart-canvas')
+    .getContext('2d');
+
+  // This will get the first returned node in the jQuery collection.
+  // eslint-disable-next-line no-unused-vars
+  var salesChart = new Chart(salesChartCanvas, {
+    type: 'line',
+    data: salesData,
+    options: salesChartOptions,
+  });
+}
+
+async function setSalesPerPlace(salesData, pieOptions) {
+  let response = await fetch(
+    'http://localhost/PrograWeb/Optica/api/venta/api-venta.php?action=salesPerPlace'
+  );
+  let data = await response.json();
+
+  salesData.datasets[0].data = [];
+  salesData.datasets[0].data[0] = data.sales_store;
+  salesData.datasets[0].data[1] = data.sales_page;
+
+  var pieChartCanvas = $('#sales-chart-canvas').get(0).getContext('2d');
+
+  // Create pie or douhnut chart
+  var pieChart = new Chart(pieChartCanvas, {
+    type: 'doughnut',
+    data: salesData,
+    options: pieOptions,
+  });
 }

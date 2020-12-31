@@ -23,8 +23,11 @@
   <script src="<?php echo HOST_BASE; ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="<?php echo HOST_BASE; ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="<?php echo HOST_BASE; ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-  <script src="<?php echo HOST_BASE; ?>/plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="<?php echo HOST_BASE; ?>/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?php echo HOST_BASE; ?>/plugins/datatables-buttons/js/pdfmake.min.js"></script>
+  <script src="<?php echo HOST_BASE; ?>/plugins/datatables-buttons/js/vfs_fonts.js"></script>
+
+  <!-- Chart JS -->
+  <script src="<?php echo HOST_BASE; ?>/plugins/chart.js/Chart.min.js"></script>
 
   <!-- Tempus Dominus y Moment JS para el calendario -->
   <script src="<?php echo HOST_BASE; ?>/plugins/moment/moment.min.js"></script>

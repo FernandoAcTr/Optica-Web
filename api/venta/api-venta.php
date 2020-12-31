@@ -2,10 +2,17 @@
 
    include_once '../../admin/class/venta.class.php';
    include_once '../../admin/class/cliente.class.php';
+   include_once '../../admin/class/database.class.php';
 
    $action = isset($_GET['action']) ? $_GET['action'] : null;
 
   switch ($action) {
+    case 'salesPerPlace':
+      salesPerPlace();
+      break;
+    case 'salesPerMonth':
+      salesPerMonth();
+      break;
     case 'createVenta':
     createVenta();
       break;
@@ -44,6 +51,57 @@
             'message' => 'Ha habido un error al registrar la venta',
           ];
       }
+
+      echo json_encode($resp);
+  }
+
+  function salesPerPlace()
+  {
+      $database = new Database();
+      $database->connect();
+
+      //contar las ventas realizadas en la pagina
+      $sql = "SELECT COUNT(*) as ventas from venta where tipo like 'Paypal' and status like 'COMPLETED'";
+      $ventasPaypal = $database->execQuery($sql, null)[0];
+      $ventasPaypal = $ventasPaypal['ventas'];
+
+      //contar las ventas realizadas en la tienda
+      $sql = "SELECT COUNT(*) as ventas from venta where tipo like 'Manual' and status like 'COMPLETED'";
+      $ventasTienda = $database->execQuery($sql, null)[0];
+      $ventasTienda = $ventasTienda['ventas'];
+
+      $resp = [
+        'ok' => true,
+        'sales_store' => $ventasTienda,
+        'sales_page' => $ventasPaypal,
+      ];
+
+      $database->close();
+
+      echo json_encode($resp);
+  }
+
+  function salesPerMonth()
+  {
+      $database = new Database();
+      $database->connect();
+
+      //contar las ventas realizadas en la pagina
+      $sql = 'SELECT
+        month(fecha) AS mes,
+        COUNT(*) AS ventas
+        FROM venta
+        WHERE YEAR(fecha) = 2020
+        GROUP BY month(fecha)
+        ORDER BY month(fecha)';
+      $ventasPorMes = $database->execQuery($sql, null);
+
+      $resp = [
+        'ok' => true,
+        'sales' => $ventasPorMes,
+      ];
+
+      $database->close();
 
       echo json_encode($resp);
   }
