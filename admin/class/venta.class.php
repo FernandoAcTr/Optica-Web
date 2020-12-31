@@ -220,7 +220,7 @@ class Venta extends Database
     {
         $sql = "SELECT v.*, concat(c.nombre, ' ', c.apellido) as cliente  
         from venta v
-        JOIN cliente c USING (id_cliente)";
+        LEFT JOIN cliente c on c.id_cliente = v.id_cliente";
 
         return $this->execQuery($sql, null);
     }
