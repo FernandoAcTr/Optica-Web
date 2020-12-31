@@ -164,13 +164,14 @@ $(function () {
   }
 
   async function savePurchase(purchase) {
+    console.log(purchase);
     let payer = purchase.payer;
     let address = purchase.purchase_units[0].shipping.address;
     let data = {
       id_cliente: payer.payer_id,
       email: payer.email_address,
-      nombre: payer.name,
-      apellido: payer.surname,
+      nombre: payer.name.given_name,
+      apellido: payer.name.surname,
       calle: address.address_line_1,
       colonia: address.address_line_2,
       ciudad: address.admin_area_1,
