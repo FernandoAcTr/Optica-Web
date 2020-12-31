@@ -8,8 +8,8 @@
    3. Validacion de formulario de registro de usuarios
    4. Calendar para el dashboard
    5. Registro de Productos Vendidos
+   6. Pie Chart JS
 */
-
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -48,7 +48,6 @@ $(function () {
 
   //registro de productos comprados
   if ($('#table-products').length) {
-    let contador = 0;
     $('#btn-registrar').click(function (e) {
       e.preventDefault();
       addProductToTable();
@@ -62,7 +61,6 @@ $(function () {
   }
 
   //Validacion de formulario de registro de usuarios
-  let isEmailCorrect = false;
   if ($('#contrasena').length) {
     $('#contrasena').keyup(validatePassword);
     $('#rep_contrasena').keyup(validatePassword);
@@ -70,44 +68,6 @@ $(function () {
 
   if ($('#correo').length) {
     $('#correo').keyup(validarEmail);
-    validarEmail();
-  }
-
-  function validatePassword(e) {
-    let password = $('#contrasena').val();
-    let repPass = $('#rep_contrasena').val();
-    if (password !== repPass) {
-      $('#rep_contrasena').addClass('is-invalid');
-      $('#password_help').text('Las contraseñas no coinciden');
-    } else {
-      $('#rep_contrasena').removeClass('is-invalid');
-      $('#rep_contrasena').addClass('is-valid');
-      $('#password_help').text('');
-    }
-  }
-
-  function validarEmail(e) {
-    console.log($('#correo').val());
-    if (
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#correo').val())
-    ) {
-      $('#correo').removeClass('is-invalid');
-      $('#email_help').text('');
-      isEmailCorrect = true;
-    } else {
-      $('#correo').addClass('is-invalid');
-      $('#email_help').text('El correo es invalido');
-      isEmailCorrect = false;
-    }
-    enableButton();
-  }
-
-  function enableButton() {
-    if (isEmailCorrect) {
-      $('#guardar').prop('disabled', false);
-    } else {
-      $('#guardar').prop('disabled', true);
-    }
   }
 
   //Calendar para el Dashboard
@@ -138,6 +98,59 @@ $(function () {
   }
 });
 
+/**
+ * Verifica que tanto la password como la repeticion de ella coincidan. 
+ * Es usada al registrar un usuario en el sistema y en la ventana para recuperar la contraseña
+ */
+function validatePassword(e) {
+  let password = $('#contrasena').val();
+  let repPass = $('#rep_contrasena').val();
+  if (password !== repPass) {
+    $('#rep_contrasena').addClass('is-invalid');
+    $('#password_help').text('Las contraseñas no coinciden');
+  } else {
+    $('#rep_contrasena').removeClass('is-invalid');
+    $('#rep_contrasena').addClass('is-valid');
+    $('#password_help').text('');
+  }
+}
+
+/**
+ * Verifica que un email cumpla con un patron estandar mediante una expresion regular 
+ * Es usada en la pagina para registrar usuarios del sistema
+ */
+function validarEmail() {
+  console.log($('#correo').val());
+  let isEmailCorrect
+  if (
+    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($('#correo').val())
+  ) {
+    $('#correo').removeClass('is-invalid');
+    $('#email_help').text('');
+    isEmailCorrect = true;
+  } else {
+    $('#correo').addClass('is-invalid');
+    $('#email_help').text('El correo es invalido');
+    isEmailCorrect = false;
+  }
+  enableButton(isEmailCorrect);
+}
+
+/**
+ * Habilita o deshabilita el boton de guardado al registrar un nuevo usuario del sistema
+ */
+function enableButton(isEmailCorrect) {
+  if (isEmailCorrect) {
+    $('#guardar').prop('disabled', false);
+  } else {
+    $('#guardar').prop('disabled', true);
+  }
+}
+
+/**
+ * Esta funcion agrega el precio a un input hidden cuando se registra en la pagina de venta
+ * Esto con la funalidad de que se mande por medio de POST como un arreglo. 
+ */
 async function obtenerProductoPrecio() {
   let idProducto = $('#producto').val();
 
@@ -151,6 +164,10 @@ async function obtenerProductoPrecio() {
   $('#precio').val(producto.precio);
 }
 
+/**
+ * Esta funcion agrega un nuevo producto a una tabla. 
+ * Es llamada tanto en la pagina para registrar una compra como para registrar una venta
+ */
 function addProductToTable() {
   let contador = $('tbody tr:last th').text() || 0;
 
@@ -191,6 +208,10 @@ function addProductToTable() {
   });
 }
 
+/**
+ * Esta funcion es llamada cada que se agrega un producto en la pagina 
+ * para registrar una venta desde el administrador
+ */
 function updatePurchaseTotal() {
   let total = 0;
 
@@ -208,6 +229,11 @@ function updatePurchaseTotal() {
   $('#total').text(formatter.format(total));
 }
 
+/**
+ * Esta funcion es llamada cada que cambia el number range de la pagina para vender un producto 
+ * en AdminLTE. Si se intenta vender mas de un producto en stock aparece una advertencia
+ * @param cantidad la cantidad que se quiere verificar
+ */
 async function verificarInventario(cantidad) {
   let idProducto = $('#producto').val();
 
