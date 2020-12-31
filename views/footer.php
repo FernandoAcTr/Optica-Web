@@ -60,7 +60,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <!-- PAYPAL -->
-<script src="https://www.paypal.com/sdk/js?client-id=Afc5sJoHxQIsF9L7U2XbR-sjdx9BUjGK2sS552A-gmMtFcbMS4RRRhZWmGq7DSnPGOn9Zx7OGAM6MHeH&currency=MXN">
+<script src="https://www.paypal.com/sdk/js?client-id=AXli0AO4oWuQmq9cTAsOyXlyG0S1PQoNJqkGZbvR7LP64pOq96oxgyXsQuv7kSUzn-KaygQZ4-w13klF&currency=MXN">
 </script>
 
 <!-- Main -->
