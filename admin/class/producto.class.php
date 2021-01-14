@@ -129,6 +129,9 @@
 
                //commit a todas las operaciones
                $this->conn->commit();
+
+               //regresar el id del producto insertado
+               return $producto['id_producto'];
            } catch (\Throwable $th) {
                $this->conn->rollback();
                throw $th;
@@ -158,7 +161,9 @@
                    $stmt = $this->conn->prepare($sql);
                    $stmt->execute([$this->color, $this->talla, $this->longitud_varilla, $this->ancho_puente, $this->ancho_total, $this->sku, $this->id_producto]);
                }
-               $this->deletePicture($antiguo['foto']);
+               if ($antiguo) {
+                   $this->deletePicture($antiguo['foto']);
+               }
                $this->conn->commit();
            } catch (\Throwable $th) {
                $this->conn->rollback();
@@ -175,10 +180,12 @@
                $params = [$this->id_producto];
                $this->execStmt($sql, $params);
 
-               $this->deletePicture($producto['foto']);
+               if ($producto) {
+                   $this->deletePicture($producto['foto']);
+               }
            } catch (\Throwable $th) {
-               $mensaje = 'No puedes eliminar un producto que ya se ha comprado antes. Elimina todas las compras en donde se encuentre registrado';
-               die($mensaje);
+               $mensaje = 'No puedes eliminar un producto que ya se ha comprado o vendido antes. Elimina todas las compras o ventas en donde se encuentre registrado';
+               throw new Exception($mensaje, 1);
            }
        }
 
@@ -186,11 +193,11 @@
        {
            $sql = "SELECT p.*, pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  m.marca, c.categoria, f.forma, ta.tipo_armazon, COALESCE(pd.foto, 'no-foto.jpg') as foto  
            from producto p
-           JOIN producto_detalle pd on p.id_producto = pd.id_producto
-           JOIN marca m on m.id_marca = p.id_marca
-           JOIN categoria c on c.id_categoria = p.id_categoria
-           JOIN forma f on f.id_forma = p.id_forma
-           JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon";
+           LEFT JOIN producto_detalle pd on p.id_producto = pd.id_producto
+           LEFT JOIN marca m on m.id_marca = p.id_marca
+           LEFT JOIN categoria c on c.id_categoria = p.id_categoria
+           LEFT JOIN forma f on f.id_forma = p.id_forma
+           LEFT JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon";
            $productos = $this->execQuery($sql, null);
 
            return $productos;
@@ -202,16 +209,16 @@
            pd.color, pd.talla, pd.longitud_varilla, pd.ancho_puente, pd.ancho_total, pd.sku,  
            m.marca, c.categoria, f.forma, ta.tipo_armazon, i.stock, COALESCE(pd.foto, 'no-foto.jpg') as foto  
            from producto p
-           JOIN producto_detalle pd on p.id_producto = pd.id_producto
-           JOIN marca m on m.id_marca = p.id_marca
-           JOIN categoria c on c.id_categoria = p.id_categoria
-           JOIN forma f on f.id_forma = p.id_forma
-           JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon
-           JOIN inventario i on i.id_producto = p.id_producto
+           LEFT JOIN producto_detalle pd on p.id_producto = pd.id_producto
+           LEFT JOIN marca m on m.id_marca = p.id_marca
+           LEFT JOIN categoria c on c.id_categoria = p.id_categoria
+           LEFT JOIN forma f on f.id_forma = p.id_forma
+           LEFT JOIN tipo_armazon ta on ta.id_tipo_armazon = p.id_tipo_armazon
+           LEFT JOIN inventario i on i.id_producto = p.id_producto
            WHERE p.id_producto = ?";
            $productos = $this->execQuery($sql, [$this->id_producto]);
 
-           return $productos[0];
+           return $productos ? $productos[0] : [];
        }
 
        private function uploadPicture()
@@ -302,7 +309,7 @@
            ];
        }
 
-       private function getNumProducts($sql)
+       public function getNumProducts($sql)
        {
            $total = $this->execQuery($sql, null);
 
